@@ -61,3 +61,21 @@ class TestCellDefinition(object):
         assert all(cg._cell_addresses[1] == np.array([3, 3, 3]))
         assert cg._cell_indices[0] == 0
         assert cg._cell_indices[1] == 63
+
+    def test_sorting(self):
+        points = np.array([[0.8, 0.8, 0.8],
+                           [0.1, 0.1, 0.1],
+                           [0.9, 0.9, 0.9]])
+
+        cg = CellGrid(box=np.ones(3), max_dist=0.25, coordinates=points)
+
+        assert all(cg._original_indices == np.array([1, 0, 2]))
+        assert all(cg._order == np.array([1, 0, 2]))
+        for val, ref in zip(cg._sorted_coords, np.array([[ 0.1,  0.1,  0.1],
+                                                         [ 0.8,  0.8,  0.8],
+                                                         [ 0.9,  0.9,  0.9]])):
+            assert all(val == ref)
+
+        # Check that sorted coordinates are continuous C
+        # important for later work
+        assert cg._sorted_coords.flags['C'] == True
