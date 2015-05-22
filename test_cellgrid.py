@@ -97,3 +97,15 @@ class TestViewCreator(object):
         assert len(view[2]) == 0
         assert len(view[3]) == 1
         assert len(view[4]) == 2
+
+    def test_create_cg_views(self):
+        points = np.array([[0.8, 0.8, 0.8],
+                           [0.1, 0.1, 0.1],
+                           [0.9, 0.9, 0.9]])
+
+        cg = CellGrid(box=np.ones(3), max_dist=0.25, coordinates=points)
+
+        views = cg._views
+        assert len(views) == cg._total_cells
+        assert all(views[0][0] == points[1])
+        assert all(views[26] == points[0, 2])

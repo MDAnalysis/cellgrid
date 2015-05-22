@@ -74,6 +74,9 @@ class CellGrid(object):
         self._original_indices = np.arange(len(self._coordinates))[self._order]
         self._sorted_cell_addresses = self._cell_addresses[self._order]
         self._sorted_cell_indices = self._cell_indices[self._order]
+        self._views = _create_views(self._total_cells,
+                                    self._sorted_cell_addresses,
+                                    self._sorted_coords)
 
     @property
     def coordinates(self):
