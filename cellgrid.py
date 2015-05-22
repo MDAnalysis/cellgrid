@@ -37,11 +37,13 @@ class CellGrid(object):
         # Maximum desired distance
         self._max_dist = max_dist
         # determine number of cells
-        self._determine_cells()
+        self._determine_cell_dimensions()
 
         self._coordinates = coordinates
+        if coordinates is not None:
+            self._put_into_cells()
 
-    def _determine_cells(self):
+    def _determine_cell_dimensions(self):
         # number of cells in each direction
         self._ncells = np.floor_divide(self._box, self._max_dist).astype(np.int)
         self._total_cells = np.product(self._ncells)
@@ -49,7 +51,21 @@ class CellGrid(object):
         self._cell_size = self._box / self._ncells
 
     def _put_into_cells(self):
-        self._cell_locations = np.floor_divide(self._coordinates, self._cell_size)
+        self._cell_addresses = self._coordinates // self._cell_size
+        self._cell_indices = np.array([_address_to_id(a, self._ncells)
+                                       for a in self._cell_addresses], dtype=np.int)
+
+    @property
+    def coordinates(self):
+        return self._coordinates
+
+    @coordinates.setter
+    def coordinates(self, new):
+        # When setting coordinates, trigger a rebuild of the grid
+        self._coordinates = new
+        self._put_into_cells()
+
+    # TODO: Make changing box redo _determine_cells
 
     def __iter__(self):
         return iter(self.cells)

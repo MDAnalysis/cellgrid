@@ -49,3 +49,15 @@ class TestConverters(object):
 
         for c, i in zip(addresses, self.idx):
             assert _address_to_id(c, self.ncells) == i
+
+class TestCellDefinition(object):
+    def test_placement(self):
+        points = np.array([[0.1, 0.1, 0.1],[0.9, 0.9, 0.9]])
+
+        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+        cg.coordinates = points
+
+        assert all(cg._cell_addresses[0] == np.array([0, 0, 0]))
+        assert all(cg._cell_addresses[1] == np.array([3, 3, 3]))
+        assert cg._cell_indices[0] == 0
+        assert cg._cell_indices[1] == 63
