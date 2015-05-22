@@ -25,6 +25,21 @@ def _id_to_address(cid, ncells):
 
     return z, y, cid
 
+def _create_views(ncells, addresses, coords):
+    """Create a dict relating a cell index to a view of the coords"""
+    views = {}
+
+    for i in range(ncells):
+        idx = np.where(addresses == i)[0]
+        if len(idx) == 0:
+            views[i] = coords[0:0]  # empty array
+        else:
+            first = idx[0]
+            n = len(idx)
+            views[i] = coords[first:first+n]
+
+    return views
+
 class CellGrid(object):
     def __init__(self, box, max_dist, coordinates=None):
         """
@@ -57,7 +72,8 @@ class CellGrid(object):
         self._order = self._cell_indices.argsort()
         self._sorted_coords = self._coordinates[self._order]
         self._original_indices = np.arange(len(self._coordinates))[self._order]
-        self._sorted_addresses = self._cell_addresses[self._order]
+        self._sorted_cell_addresses = self._cell_addresses[self._order]
+        self._sorted_cell_indices = self._cell_indices[self._order]
 
     @property
     def coordinates(self):

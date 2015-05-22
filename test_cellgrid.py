@@ -1,6 +1,6 @@
 import numpy as np
 
-from cellgrid import CellGrid, _address_to_id, _id_to_address
+from cellgrid import CellGrid, _address_to_id, _id_to_address, _create_views
 
 
 class TestCellDetermining(object):
@@ -79,3 +79,21 @@ class TestCellDefinition(object):
         # Check that sorted coordinates are continuous C
         # important for later work
         assert cg._sorted_coords.flags['C'] == True
+
+
+class TestViewCreator(object):
+    # Need fancy test to make sure all content of view dict
+    # are views of the original coordinate array
+    # ie assert(a is view of b)
+    def test_create_views(self):
+        coords = np.array([0, 1, 1, 3, 4, 4])
+        vals = np.arange(6) * 10
+
+        view = _create_views(5, coords, vals)
+
+        assert len(view) == 5
+        assert len(view[0]) == 1
+        assert len(view[1]) == 2
+        assert len(view[2]) == 0
+        assert len(view[3]) == 1
+        assert len(view[4]) == 2
