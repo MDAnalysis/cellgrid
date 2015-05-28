@@ -27,6 +27,35 @@ class TestCellDetermining(object):
         assert all(cg._ncells == np.array([4, 4, 8]))
         assert cg._total_cells == 128
 
+    def test_change_box(self):
+        """Redefine box"""
+        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+
+        assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
+        assert all(cg._ncells == np.array([4, 4, 4]))
+        assert cg._total_cells == 64
+
+        cg.box = np.ones(3) * 2
+
+        assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
+        assert all(cg._ncells == np.array([8, 8, 8]))
+        assert cg._total_cells == 512
+
+    def test_change_max_dist(self):
+        """Redefine max dist"""
+        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+
+        assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
+        assert all(cg._ncells == np.array([4, 4, 4]))
+        assert cg._total_cells == 64
+
+        cg.max_dist = 0.50
+
+        assert all(cg._cell_size == np.array([0.50, 0.50, 0.50]))
+        assert all(cg._ncells == np.array([2, 2, 2]))
+        assert cg._total_cells == 8
+
+
 
 class TestConverters(object):
     ncells = (3, 3, 3)
@@ -79,6 +108,12 @@ class TestCellDefinition(object):
         # Check that sorted coordinates are continuous C
         # important for later work
         assert cg._sorted_coords.flags['C'] == True
+
+    def test_nocoords(self):
+        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+        cg.coordinates = None
+
+        assert cg.coordinates is None
 
 
 class TestViewCreator(object):

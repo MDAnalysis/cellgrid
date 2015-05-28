@@ -1,5 +1,11 @@
 """Cellgrid method for coordinate analysis
 
+Terminology:
+ - box -> the entire system
+ - cell -> a subset of the box
+ - grid -> the division of the box into cells
+ - id -> unique identifier for a cell
+ - address -> the cartesian coordinates of a cell within the grid
 
 """
 from __future__ import division, print_function
@@ -42,11 +48,12 @@ def _create_views(ncells, addresses, coords):
 
 class CellGrid(object):
     def __init__(self, box, max_dist, coordinates=None):
-        """
+        """Create a grid of cells
+
         :Arguments:
-        coordinates (n,3) array of positions
-        box (3) size of box in each direction
-        cellsize
+          coordinates (n,3) - array of positions
+          box (3) - size of box in each direction
+          max_dist - the maximum distance to be found
         """
         self._box = box
         # Maximum desired distance
@@ -66,6 +73,8 @@ class CellGrid(object):
         self._cell_size = self._box / self._ncells
 
     def _put_into_cells(self):
+        if self._coordinates is None:  # shortcut if no coords present
+            return
         self._cell_addresses = self._coordinates // self._cell_size
         self._cell_indices = np.array([_address_to_id(a, self._ncells)
                                        for a in self._cell_addresses], dtype=np.int)
@@ -88,7 +97,23 @@ class CellGrid(object):
         self._coordinates = new
         self._put_into_cells()
 
-    # TODO: Make changing box redo _determine_cells
+    @property
+    def box(self):
+        return self._box
+
+    @box.setter
+    def box(self, new):
+        self._box = new
+        self._determine_cell_dimensions()
+
+    @property
+    def max_dist(self):
+        return self._max_dist
+
+    @max_dist.setter
+    def max_dist(self, new):
+        self._max_dist = new
+        self._determine_cell_dimensions()
 
     def __iter__(self):
         return iter(self.cells)
