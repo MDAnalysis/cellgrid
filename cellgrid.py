@@ -55,15 +55,33 @@ class CellGrid(object):
           box (3) - size of box in each direction
           max_dist - the maximum distance to be found
         """
-        self._box = box
-        # Maximum desired distance
-        self._max_dist = max_dist
-        # determine number of cells
-        self._determine_cell_dimensions()
+        self.update(box=box, max_dist=max_dist, coordinates=coordinates)
 
-        self._coordinates = coordinates
-        if coordinates is not None:
-            self._put_into_cells()
+    def update(self, **kwargs):
+        """Update values for this CellGrid
+
+        Can set:
+          - coordinates
+          - box
+          - max_dist
+
+        This is more efficient than setting each value in turn
+        as everything is only recalculated once
+        """
+        coords = kwargs.pop('coordinates', False)
+        if not coords is False:
+            self._coordinates = coords
+        box = kwargs.pop('box', False)
+        if not box is False:
+            self._box = box
+        max_dist = kwargs.pop('max_dist', False)
+        if not max_dist is False:
+            self._max_dist = max_dist
+
+        # Weird logic, but arrays don't evaluate to there
+        if (not box is False) or (not max_dist is False):
+            self._determine_cell_dimensions()
+        self._put_into_cells()
 
     def _determine_cell_dimensions(self):
         # number of cells in each direction
