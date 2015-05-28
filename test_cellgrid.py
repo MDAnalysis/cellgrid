@@ -81,7 +81,8 @@ class TestConverters(object):
 
 class TestCellDefinition(object):
     def test_placement(self):
-        points = np.array([[0.1, 0.1, 0.1],[0.9, 0.9, 0.9]])
+        points = np.array([[0.1, 0.1, 0.1],
+                           [0.9, 0.9, 0.9]])
 
         cg = CellGrid(box=np.ones(3), max_dist=0.25)
         cg.coordinates = points
@@ -144,3 +145,18 @@ class TestViewCreator(object):
         assert len(views) == cg._total_cells
         assert all(views[0][0] == points[1])
         assert all(views[26] == points[0, 2])
+
+    def test_create_cg_views_2(self):
+        # 8 cells
+        # 1 coordinate in cell 0 (first)
+        # 2 coordinates in cell 7 (last)
+        points = np.array([[0.8, 0.8, 0.8],
+                           [0.1, 0.1, 0.1],
+                           [0.9, 0.9, 0.9]])
+
+        cg = CellGrid(box=np.ones(3), max_dist=0.50,
+                      coordinates=points)
+
+        for cell, exp in zip(cg, [1, 0, 0, 0,
+                                  0, 0, 0, 2]):
+            assert len(cell) == exp

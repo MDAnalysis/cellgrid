@@ -31,12 +31,12 @@ def _id_to_address(cid, ncells):
 
     return z, y, cid
 
-def _create_views(ncells, addresses, coords):
+def _create_views(ncells, indices, coords):
     """Create a dict relating a cell index to a view of the coords"""
     views = {}
 
     for i in range(ncells):
-        idx = np.where(addresses == i)[0]
+        idx = np.where(indices == i)[0]
         if len(idx) == 0:
             views[i] = coords[0:0]  # empty array
         else:
@@ -47,6 +47,13 @@ def _create_views(ncells, addresses, coords):
     return views
 
 class CellGrid(object):
+    """
+    Updating the CellGrid can be done by directly setting the attributes,
+    this will automatically update the CellGrid contents.
+
+    The update method allows many attributes to be changed simultaneously
+    and everything only recalculated once.
+    """
     def __init__(self, box, max_dist, coordinates=None):
         """Create a grid of cells
 
@@ -102,7 +109,7 @@ class CellGrid(object):
         self._sorted_cell_addresses = self._cell_addresses[self._order]
         self._sorted_cell_indices = self._cell_indices[self._order]
         self._views = _create_views(self._total_cells,
-                                    self._sorted_cell_addresses,
+                                    self._sorted_cell_indices,
                                     self._sorted_coords)
 
     @property
@@ -133,10 +140,38 @@ class CellGrid(object):
         self._max_dist = new
         self._determine_cell_dimensions()
 
-    def __iter__(self):
-        return iter(self.cells)
+    def __len__(self):
+        return self._total_cells
+
+    def __getitem__(self, item):
+        """Retrieve a single cell"""
+        try:
+            view = self._views[item]
+            return Cell(item, parent=self, coordinates=view)
+        except KeyError:
+            raise IndexError("No such item: {0}".format(item))
 
 
 class Cell(object):
-    def __init__(self):
-        pass
+    """A single Cell in a CellGrid
+
+    :Attributes:
+      index
+        The index of this Cell within the CellGrid
+      parent
+        The CellGrid to which this Cell belongs.
+      coordinates
+        The view on the master coordinates array on parent.
+
+    """
+    def __init__(self, idx, parent, coordinates):
+        self.idx = idx
+        self.parent = parent
+        self.coordinates = coordinates
+
+    @property
+    def address(self):
+        return _id_to_address(self.idx, self.parent._ncells)
+
+    def __len__(self):
+        return len(self.coordinates)
