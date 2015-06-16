@@ -6,6 +6,7 @@ Terminology:
  - grid -> the division of the box into cells
  - id -> unique identifier for a cell
  - address -> the cartesian coordinates of a cell within the grid
+              (x, y, z)
 
 """
 from __future__ import division, print_function
@@ -15,21 +16,21 @@ import numpy as np
 def _address_to_id(addr, ncells):
     """Return the cell index from a cell address
 
-    address is (z, y, x)
+    address is (x, y, z)
     """
-    return addr[2] + addr[1] * ncells[0] + addr[0] * ncells[1] * ncells[2]
+    return addr[0] + addr[1] * ncells[0] + addr[2] * ncells[1] * ncells[0]
 
 def _id_to_address(cid, ncells):
     """Return the cell adress from a cell index
 
-    address is (z, y, x)
+    address is (x, y, z)
     """
     z = cid // (ncells[0] * ncells[1])
     cid %= ncells[0] * ncells[1]
     y = cid // ncells[0]
     cid %= ncells[0]
 
-    return z, y, cid
+    return cid, y, z
 
 def _create_views(ncells, indices, coords):
     """Create a dict relating a cell index to a view of the coords"""
@@ -63,6 +64,7 @@ class CellGrid(object):
           max_dist - the maximum distance to be found
         """
         self.update(box=box, max_dist=max_dist, coordinates=coordinates)
+        self.periodic = True
 
     def update(self, **kwargs):
         """Update values for this CellGrid
@@ -143,13 +145,35 @@ class CellGrid(object):
     def __len__(self):
         return self._total_cells
 
+    def _address_pbc(self, address):
+        """Apply periodic boundary conditions to an address"""
+        w = address >= self._ncells
+        address[w] -= self._ncells[w]
+
+        w = address < 0
+        address[w] += self._ncells[w]
+
+        return address
+
     def __getitem__(self, item):
-        """Retrieve a single cell"""
+        """Retrieve a single cell
+        
+        Can use either an address (as np array) or integer index
+        """
+        if isinstance(item, np.ndarray):  # if address
+            if self.periodic:
+                item = self._address_pbc(item)
+            item = _address_to_id(item, self._ncells)
+
         try:
             view = self._views[item]
             return Cell(item, parent=self, coordinates=view)
         except KeyError:
             raise IndexError("No such item: {0}".format(item))
+
+    def __repr__(self):
+        return ("<CellGrid with dimensions {nc[0]}, {nc[1]}, {nc[2]}>"
+                "".format(nc=self._ncells))
 
 
 class Cell(object):
@@ -158,6 +182,8 @@ class Cell(object):
     :Attributes:
       index
         The index of this Cell within the CellGrid
+      address
+        The address of this Cell within the CellGrid
       parent
         The CellGrid to which this Cell belongs.
       coordinates
@@ -166,12 +192,22 @@ class Cell(object):
     """
     def __init__(self, idx, parent, coordinates):
         self.idx = idx
+        self.address = _id_to_address(idx, parent._ncells)
         self.parent = parent
         self.coordinates = coordinates
 
-    @property
-    def address(self):
-        return _id_to_address(self.idx, self.parent._ncells)
-
     def __len__(self):
         return len(self.coordinates)
+
+    @property
+    def neighbours(self):
+        """Generator to iterate over my 13 neighbours"""
+        route = np.array([[1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
+                          [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
+                          [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1]])
+        me = self.address
+        return (self.parent[me + other] for other in route)
+
+    def __repr__(self):
+        return ("<Cell at {addr} with {num} coords>"
+                "".format(addr=self.address, num=len(self)))

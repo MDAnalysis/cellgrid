@@ -11,6 +11,7 @@ class TestCellDetermining(object):
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 4]))
         assert cg._total_cells == 64
+        assert len(cg) == 64
 
     def test_creation_2(self):
         """Box split into 4, 0.22 needs to round up to 0.25"""
@@ -34,12 +35,14 @@ class TestCellDetermining(object):
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 4]))
         assert cg._total_cells == 64
+        assert len(cg) == 64
 
         cg.box = np.ones(3) * 2
 
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([8, 8, 8]))
         assert cg._total_cells == 512
+        assert len(cg) == 512
 
     def test_change_max_dist(self):
         """Redefine max dist"""
@@ -48,13 +51,14 @@ class TestCellDetermining(object):
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 4]))
         assert cg._total_cells == 64
+        assert len(cg) == 64
 
         cg.max_dist = 0.50
 
         assert all(cg._cell_size == np.array([0.50, 0.50, 0.50]))
         assert all(cg._ncells == np.array([2, 2, 2]))
         assert cg._total_cells == 8
-
+        assert len(cg) == 8
 
 
 class TestConverters(object):
@@ -65,7 +69,7 @@ class TestConverters(object):
 
     def _conv(self, idx, addr):
         w = np.where(idx == addr)
-        return w[0][0], w[1][0], w[2][0]
+        return w[2][0], w[1][0], w[0][0]
 
     def test_id_to_addr(self):
         addresses = (self._conv(i, self.addr) for i in range(self.nids))
@@ -78,6 +82,7 @@ class TestConverters(object):
 
         for c, i in zip(addresses, self.idx):
             assert _address_to_id(c, self.ncells) == i
+
 
 class TestCellDefinition(object):
     def test_placement(self):
