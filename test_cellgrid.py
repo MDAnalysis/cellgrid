@@ -128,16 +128,17 @@ class TestViewCreator(object):
     # ie assert(a is view of b)
     def test_create_views(self):
         coords = np.array([0, 1, 1, 3, 4, 4])
+        indices = np.array([0, 1, 2, 3, 4, 5])
         vals = np.arange(6) * 10
 
-        view = _create_views(5, coords, vals)
+        view = _create_views(5, coords, vals, indices)
 
         assert len(view) == 5
-        assert len(view[0]) == 1
-        assert len(view[1]) == 2
-        assert len(view[2]) == 0
-        assert len(view[3]) == 1
-        assert len(view[4]) == 2
+        assert len(view[0][0]) == 1
+        assert len(view[1][0]) == 2
+        assert len(view[2][0]) == 0
+        assert len(view[3][0]) == 1
+        assert len(view[4][0]) == 2
 
     def test_create_cg_views(self):
         points = np.array([[0.8, 0.8, 0.8],
@@ -148,8 +149,8 @@ class TestViewCreator(object):
 
         views = cg._views
         assert len(views) == cg._total_cells
-        assert all(views[0][0] == points[1])
-        assert all(views[26] == points[0, 2])
+        assert all(views[0][0][0] == points[1])
+        assert all(views[26][0] == points[0, 2])
 
     def test_create_cg_views_2(self):
         # 8 cells

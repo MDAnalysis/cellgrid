@@ -12,6 +12,7 @@ Terminology:
 from __future__ import division, print_function
 
 import numpy as np
+from itertools import izip
 
 def _address_to_id(addr, ncells):
     """Return the cell index from a cell address
@@ -32,20 +33,51 @@ def _id_to_address(cid, ncells):
 
     return cid, y, z
 
-def _create_views(ncells, indices, coords):
-    """Create a dict relating a cell index to a view of the coords"""
+def _create_views(ncells, indices, coords, original):
+    """Create a dict relating a cell index to a view of the coords
+
+    Each entry is a tuple of two pointers, one to coordinates and
+    the other to indices
+    """
     views = {}
 
     for i in range(ncells):
         idx = np.where(indices == i)[0]
         if len(idx) == 0:
-            views[i] = coords[0:0]  # empty array
+            views[i] = (coords[0:0], original[0:0])  # empty array
         else:
             first = idx[0]
             n = len(idx)
-            views[i] = coords[first:first+n]
+            views[i] = (coords[first:first+n], original[first:first+n])
 
     return views
+
+def dist(x, y):
+    return np.linalg.norm(x - y)
+
+def intra_distance_array(coords, indices,
+                         out_d, out_idx,
+                         offset):
+    """Calculate all pairs within a set of coords"""
+    pos = 0
+    for i, (ac, ai) in enumerate(izip(coords, indices)):
+        for bc, bi in izip(coords[i+1:], indices[i+1:]):
+            out_idx[offset + pos] = ai, bi
+            out_d[offset + pos] = dist(ac, bc)
+            pos += 1
+
+def inter_distance_array(coords1, indices1,
+                         coords2, indices2,
+                         out_d, out_idx,
+                         offset):
+    """Calculate all pairs within two sets of coords"""
+    pos = 0
+    for ac, ai in izip(coords1, indices1):
+        for bc, bi in izip(coords2, indices2):
+            out_idx[offset + pos] = ai, bi
+            out_d[offset + pos] = dist(ac, bc)
+            pos += 1
+
 
 class CellGrid(object):
     """
@@ -112,7 +144,8 @@ class CellGrid(object):
         self._sorted_cell_indices = self._cell_indices[self._order]
         self._views = _create_views(self._total_cells,
                                     self._sorted_cell_indices,
-                                    self._sorted_coords)
+                                    self._sorted_coords,
+                                    self._original_indices)
 
     @property
     def coordinates(self):
@@ -155,6 +188,50 @@ class CellGrid(object):
 
         return address
 
+    def capped_distance_array(self):
+        """Return the capped distance array
+
+        This is given as 2 arrays, one of indices with shape (N, 2)
+        and another of distances with shape (N)
+
+        Where N is the number of pairs that the method generates
+        """
+        idx, dists = self._allocate_results()
+        # Iterate through and fill outputs
+        pos = 0
+        for c in self:  # loop over all cells
+            print("Doing cell {}".format(c))
+            nc = len(c)
+            size = (nc - 1) * nc // 2
+            print("{} {}".format(pos, pos+size))
+            intra_distance_array(c.coordinates, c.indices,
+                                 dists, idx,
+                                 pos)
+            pos += size
+            for neb in c.neighbours:  # loop over 13 nebs
+                size = nc * len(neb)
+                inter_distance_array(c.coordinates, c.indices,
+                                     neb.coordinates, neb.indices,
+                                     dists, idx,
+                                     pos)
+                pos += size
+
+        return idx, dists
+
+    def _allocate_results(self):
+        """Pass back an index and coordinate array of correct size"""
+        N = 0
+        for c in self:
+            nc = len(c)
+            N += (nc - 1) * nc // 2
+            for o in c.neighbours:
+                N += nc * len(o)
+        # Allocate outputs
+        idx = np.zeros((N, 2), dtype=np.int)
+        dists = np.zeros(N)
+
+        return idx, dists
+
     def __getitem__(self, item):
         """Retrieve a single cell
         
@@ -166,8 +243,8 @@ class CellGrid(object):
             item = _address_to_id(item, self._ncells)
 
         try:
-            view = self._views[item]
-            return Cell(item, parent=self, coordinates=view)
+            coords, idx = self._views[item]
+            return Cell(item, parent=self, coordinates=coords, indices=idx)
         except KeyError:
             raise IndexError("No such item: {0}".format(item))
 
@@ -188,13 +265,15 @@ class Cell(object):
         The CellGrid to which this Cell belongs.
       coordinates
         The view on the master coordinates array on parent.
-
+      original
+        The indices of the coordinates
     """
-    def __init__(self, idx, parent, coordinates):
-        self.idx = idx
-        self.address = _id_to_address(idx, parent._ncells)
+    def __init__(self, index, parent, coordinates, indices):
+        self.index = index
+        self.address = _id_to_address(index, parent._ncells)
         self.parent = parent
         self.coordinates = coordinates
+        self.indices = indices
 
     def __len__(self):
         return len(self.coordinates)
