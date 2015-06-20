@@ -1,6 +1,6 @@
 import numpy as np
 
-from cellgrid import CellGrid, _address_to_id, _id_to_address, _create_views
+from cellgrid import CellGrid, _address_to_index, _index_to_address, _create_views
 
 
 class TestCellDetermining(object):
@@ -71,17 +71,17 @@ class TestConverters(object):
         w = np.where(idx == addr)
         return w[2][0], w[1][0], w[0][0]
 
-    def test_id_to_addr(self):
+    def test_index_to_addr(self):
         addresses = (self._conv(i, self.addr) for i in range(self.nids))
     
         for i, c in zip(self.idx, addresses):
-            assert _id_to_address(i, self.ncells) == c
+            assert _index_to_address(i, self.ncells) == c
 
-    def test_addr_to_id(self):
+    def test_addr_to_index(self):
         addresses = (self._conv(i, self.addr) for i in range(self.nids))
 
         for c, i in zip(addresses, self.idx):
-            assert _address_to_id(c, self.ncells) == i
+            assert _address_to_index(c, self.ncells) == i
 
 
 class TestCellDefinition(object):

@@ -1,12 +1,22 @@
 """Cellgrid method for coordinate analysis
 
 Terminology:
- - box -> the entire system
- - cell -> a subset of the box
- - grid -> the division of the box into cells
- - id -> unique identifier for a cell
+ - box -> the entire extent system
+ - cell -> a subset of the box, a box contains many cells
+ - grid -> the division of the box into equal sized cells
+ - index -> unique identifier for a cell as an integer
  - address -> the cartesian coordinates of a cell within the grid
-              (x, y, z)
+              (x, y, z), also uniquely identifies cells
+
+
+This is an implementation of a cell method as described in 
+Allen and Tildesley page 149.  Rather than using a linked list
+for each cell, coordinates are instead sorted according to their
+cells.  This then allows cells to be defined as a continuous slice
+of a numpy array (essentially a pointer and size).  This approach
+was chosen so that interfacing with external C code was simpler.
+
+
 
 """
 from __future__ import division, print_function
@@ -14,14 +24,14 @@ from __future__ import division, print_function
 import numpy as np
 from itertools import izip
 
-def _address_to_id(addr, ncells):
+def _address_to_index(addr, ncells):
     """Return the cell index from a cell address
 
     address is (x, y, z)
     """
     return addr[0] + addr[1] * ncells[0] + addr[2] * ncells[1] * ncells[0]
 
-def _id_to_address(cid, ncells):
+def _index_to_address(cid, ncells):
     """Return the cell adress from a cell index
 
     address is (x, y, z)
@@ -86,14 +96,16 @@ class CellGrid(object):
 
     The update method allows many attributes to be changed simultaneously
     and everything only recalculated once.
+
+    Iterating over the CellGrid will cycle through all the Cells
     """
     def __init__(self, box, max_dist, coordinates=None):
         """Create a grid of cells
 
         :Arguments:
-          coordinates (n,3) - array of positions
           box (3) - size of box in each direction
           max_dist - the maximum distance to be found
+          coordinates (n,3) - array of positions [optional]
         """
         self.update(box=box, max_dist=max_dist, coordinates=coordinates)
         self.periodic = True
@@ -135,7 +147,7 @@ class CellGrid(object):
         if self._coordinates is None:  # shortcut if no coords present
             return
         self._cell_addresses = self._coordinates // self._cell_size
-        self._cell_indices = np.array([_address_to_id(a, self._ncells)
+        self._cell_indices = np.array([_address_to_index(a, self._ncells)
                                        for a in self._cell_addresses], dtype=np.int)
         self._order = self._cell_indices.argsort()
         self._sorted_coords = self._coordinates[self._order]
@@ -240,7 +252,7 @@ class CellGrid(object):
         if isinstance(item, np.ndarray):  # if address
             if self.periodic:
                 item = self._address_pbc(item)
-            item = _address_to_id(item, self._ncells)
+            item = _address_to_index(item, self._ncells)
 
         try:
             coords, idx = self._views[item]
@@ -270,7 +282,7 @@ class Cell(object):
     """
     def __init__(self, index, parent, coordinates, indices):
         self.index = index
-        self.address = _id_to_address(index, parent._ncells)
+        self.address = _index_to_address(index, parent._ncells)
         self.parent = parent
         self.coordinates = coordinates
         self.indices = indices
