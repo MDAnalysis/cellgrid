@@ -44,25 +44,28 @@ def _index_to_address(cid, ncells):
     return cid, y, z
 
 def _create_views(ncells, indices, coords, original):
-    """Create a dict relating a cell index to a view of the coords
+    """Create a list relating a cell index to a view of the coords
 
     Each entry is a tuple of two pointers, one to coordinates and
     the other to indices
     """
-    views = {}
+    views = []
 
     for i in range(ncells):
         idx = np.where(indices == i)[0]
         if len(idx) == 0:
-            views[i] = (coords[0:0], original[0:0])  # empty array
+            views.append((coords[0:0], original[0:0]))  # empty array
         else:
             first = idx[0]
             n = len(idx)
-            views[i] = (coords[first:first+n], original[first:first+n])
+            views.append((coords[first:first+n], original[first:first+n]))
 
     return views
 
+# TODO: Move distance stuff out into a separate file
+# This file should only be for Cells and CellGrids
 def dist(x, y):
+    """Distance between two points"""
     return np.linalg.norm(x - y)
 
 def intra_distance_array(coords, indices,
@@ -144,15 +147,29 @@ class CellGrid(object):
         self._cell_size = self._box / self._ncells
 
     def _put_into_cells(self):
+        """Process the coordinates into cells"""
+        # Can probably remove a lot of these arrays,
+        # as they are unused
+        # But waiting to do optimisation
         if self._coordinates is None:  # shortcut if no coords present
             return
+        # Which cell each coordinate is in (as address)
         self._cell_addresses = self._coordinates // self._cell_size
-        self._cell_indices = np.array([_address_to_index(a, self._ncells)
+        # Which cell each coordinate is in (as index)
+        self._cell_indices = np.array([self._address_to_index(a)
                                        for a in self._cell_addresses], dtype=np.int)
+        # An array that puts everything into correct order
         self._order = self._cell_indices.argsort()
+        # Coordinates sorted according to their cell
         self._sorted_coords = self._coordinates[self._order]
+        # The original ordering of the coordinates
+        # can use to "unsort" coordinates
         self._original_indices = np.arange(len(self._coordinates))[self._order]
         self._sorted_cell_addresses = self._cell_addresses[self._order]
+        # A sorted version of the cell indices
+        # will be "blocks" of cell indices
+        # eg [0, 0, 0, 1, 1, 2, 2, 2, ....]
+        # allowing the slices to be created
         self._sorted_cell_indices = self._cell_indices[self._order]
         self._views = _create_views(self._total_cells,
                                     self._sorted_cell_indices,
@@ -190,6 +207,14 @@ class CellGrid(object):
     def __len__(self):
         return self._total_cells
 
+    def _address_to_index(self, address):
+        """Translate an address inside this CellGrid to an index"""
+        return _address_to_index(address, self._ncells)
+
+    def _index_to_address(self, index):
+        """Translate an index to an address inside this CellGrid"""
+        return _index_to_address(index, self._ncells)
+
     def _address_pbc(self, address):
         """Apply periodic boundary conditions to an address"""
         w = address >= self._ncells
@@ -200,6 +225,8 @@ class CellGrid(object):
 
         return address
 
+    # TODO: Move this out of the class
+    # and into its own submodule
     def capped_distance_array(self):
         """Return the capped distance array
 
@@ -232,6 +259,8 @@ class CellGrid(object):
 
     def _allocate_results(self):
         """Pass back an index and coordinate array of correct size"""
+        # This is in the wrong place, should move into
+        # capped_self_distance_array once created
         N = 0
         for c in self:
             nc = len(c)
@@ -247,18 +276,41 @@ class CellGrid(object):
     def __getitem__(self, item):
         """Retrieve a single cell
         
-        Can use either an address (as np array) or integer index
+        Can use either an address (as np array or tuple) or integer index
         """
+        # Internally, cells are stored in a dict of views
+        if isinstance(item, tuple):
+            item = np.array(item)
         if isinstance(item, np.ndarray):  # if address
             if self.periodic:
                 item = self._address_pbc(item)
-            item = _address_to_index(item, self._ncells)
+            item = self._address_to_index(item)
 
         try:
             coords, idx = self._views[item]
-            return Cell(item, parent=self, coordinates=coords, indices=idx)
         except KeyError:
             raise IndexError("No such item: {0}".format(item))
+        return Cell(item, parent=self, coordinates=coords, indices=idx)
+
+    def __eq__(self, other):
+        """Check that this CellGrid is compatible with another
+        Checks:
+         - box size
+         - number of cells in each dimension
+
+        This is important when wanting to compare the contents of the two
+        Note that the two CellGrids may have a different coordinate data, both
+        in terms of data and number of coordinates,
+        and still be considered equal.
+        """
+        if not isinstance(other, CellGrid):
+            return False
+        if not len(other) == len(self):
+            return False
+        if not (other._ncells == self._ncells).all():
+            return False
+
+        return True
 
     def __repr__(self):
         return ("<CellGrid with dimensions {nc[0]}, {nc[1]}, {nc[2]}>"
@@ -280,9 +332,22 @@ class Cell(object):
       original
         The indices of the coordinates
     """
+    _half_route = np.array([[1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
+                            [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
+                            [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1]])
+
+    _full_route = np.array([[1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
+                            [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
+                            [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1],
+                            [-1, 0, 0], [-1, -1, 0], [0, -1, 0], [1, -1, 0],
+                            [-1, 0, -1], [-1, -1, -1], [0, -1, -1], [1, -1, -1], [0, 0, -1],
+                            [-1, 0, 1], [-1, -1, 1], [0, -1, 1], [1, -1, 1]])
+
+
+    # Cells are generated on demand by CellGrids, so they
+    # should ideally be as light as possible
     def __init__(self, index, parent, coordinates, indices):
         self.index = index
-        self.address = _index_to_address(index, parent._ncells)
         self.parent = parent
         self.coordinates = coordinates
         self.indices = indices
@@ -291,13 +356,34 @@ class Cell(object):
         return len(self.coordinates)
 
     @property
-    def neighbours(self):
-        """Generator to iterate over my 13 neighbours"""
-        route = np.array([[1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
-                          [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
-                          [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1]])
+    def address(self):
+        """The cartesian address of this Cell within its CellGrid"""
+        return _index_to_address(self.index, self.parent._ncells)
+
+    # This method of generating neighbours only allows me to
+    # retrieve cells from within the same CellGrid, which is
+    # annoying for doing 2 species comparison
+    #
+    # Will want to change this to return either indices or 
+    # addresses of neighbours. 
+    # neighbours_indices
+    # neighbours_coordinates
+    #
+    # The periodicity will still be determined by the CellGrid
+    # however!
+    # Should probably move knowledge of boundaries into the Cell,
+    # ie. the cell is aware of the PBC.
+    @property
+    def half_neighbours(self):
+        """Generator to iterate over the address of my 13 neighbours"""
         me = self.address
-        return (self.parent[me + other] for other in route)
+        return (me + other for other in self._half_route)
+
+    @property
+    def all_neighbours(self):
+        """Generator to iterate over the address of my 26 neighbours"""
+        me = self.address
+        return (me + other for other in self._full_route)
 
     def __repr__(self):
         return ("<Cell at {addr} with {num} coords>"
