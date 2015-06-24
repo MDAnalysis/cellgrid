@@ -196,38 +196,6 @@ class CellGrid(object):
 
         return address
 
-    # TODO: Move this out of the class
-    # and into its own submodule
-    def capped_distance_array(self):
-        """Return the capped distance array
-
-        This is given as 2 arrays, one of indices with shape (N, 2)
-        and another of distances with shape (N)
-
-        Where N is the number of pairs that the method generates
-        """
-        idx, dists = self._allocate_results()
-        # Iterate through and fill outputs
-        pos = 0
-        for c in self:  # loop over all cells
-            print("Doing cell {}".format(c))
-            nc = len(c)
-            size = (nc - 1) * nc // 2
-            print("{} {}".format(pos, pos+size))
-            intra_distance_array(c.coordinates, c.indices,
-                                 dists, idx,
-                                 pos)
-            pos += size
-            for neb in c.neighbours:  # loop over 13 nebs
-                size = nc * len(neb)
-                inter_distance_array(c.coordinates, c.indices,
-                                     neb.coordinates, neb.indices,
-                                     dists, idx,
-                                     pos)
-                pos += size
-
-        return idx, dists
-
     def __getitem__(self, item):
         """Retrieve a single cell
         
@@ -284,7 +252,7 @@ class Cell(object):
         The CellGrid to which this Cell belongs.
       coordinates
         The view on the master coordinates array on parent.
-      original
+      indices
         The indices of the coordinates
     """
     _half_route = np.array([[1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
@@ -315,19 +283,6 @@ class Cell(object):
         """The cartesian address of this Cell within its CellGrid"""
         return self.parent._index_to_address(self.index)
 
-    # This method of generating neighbours only allows me to
-    # retrieve cells from within the same CellGrid, which is
-    # annoying for doing 2 species comparison
-    #
-    # Will want to change this to return either indices or 
-    # addresses of neighbours. 
-    # neighbours_indices
-    # neighbours_coordinates
-    #
-    # The periodicity will still be determined by the CellGrid
-    # however!
-    # Should probably move knowledge of boundaries into the Cell,
-    # ie. the cell is aware of the PBC.
     @property
     def half_neighbours(self):
         """Generator to iterate over the address of my 13 neighbours"""
