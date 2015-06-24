@@ -61,6 +61,26 @@ class TestCellDetermining(object):
         assert len(cg) == 8
 
 
+class TestCellGridGetitem(object):
+    """Test retrieving Cells from CellGrid
+
+    Cells can be referred to as:
+     - integers
+     - tuple of coordinates
+     - array of coordinates
+
+    If the CellGrid is periodic, then coordinates might
+    need to be wrapped by the CellGrid.
+    """
+    def test_getitem_integer(self):
+        pass
+
+    def test_getitem_tuple(self):
+        pass
+
+    def test_getitem_ndarray(self):
+        pass
+
 class TestConverters(object):
     ncells = (3, 3, 3)
     nids = 27

@@ -62,35 +62,6 @@ def _create_views(ncells, indices, coords, original):
 
     return views
 
-# TODO: Move distance stuff out into a separate file
-# This file should only be for Cells and CellGrids
-def dist(x, y):
-    """Distance between two points"""
-    return np.linalg.norm(x - y)
-
-def intra_distance_array(coords, indices,
-                         out_d, out_idx,
-                         offset):
-    """Calculate all pairs within a set of coords"""
-    pos = 0
-    for i, (ac, ai) in enumerate(izip(coords, indices)):
-        for bc, bi in izip(coords[i+1:], indices[i+1:]):
-            out_idx[offset + pos] = ai, bi
-            out_d[offset + pos] = dist(ac, bc)
-            pos += 1
-
-def inter_distance_array(coords1, indices1,
-                         coords2, indices2,
-                         out_d, out_idx,
-                         offset):
-    """Calculate all pairs within two sets of coords"""
-    pos = 0
-    for ac, ai in izip(coords1, indices1):
-        for bc, bi in izip(coords2, indices2):
-            out_idx[offset + pos] = ai, bi
-            out_d[offset + pos] = dist(ac, bc)
-            pos += 1
-
 
 class CellGrid(object):
     """
@@ -257,22 +228,6 @@ class CellGrid(object):
 
         return idx, dists
 
-    def _allocate_results(self):
-        """Pass back an index and coordinate array of correct size"""
-        # This is in the wrong place, should move into
-        # capped_self_distance_array once created
-        N = 0
-        for c in self:
-            nc = len(c)
-            N += (nc - 1) * nc // 2
-            for o in c.neighbours:
-                N += nc * len(o)
-        # Allocate outputs
-        idx = np.zeros((N, 2), dtype=np.int)
-        dists = np.zeros(N)
-
-        return idx, dists
-
     def __getitem__(self, item):
         """Retrieve a single cell
         
@@ -358,7 +313,7 @@ class Cell(object):
     @property
     def address(self):
         """The cartesian address of this Cell within its CellGrid"""
-        return _index_to_address(self.index, self.parent._ncells)
+        return self.parent._index_to_address(self.index)
 
     # This method of generating neighbours only allows me to
     # retrieve cells from within the same CellGrid, which is
