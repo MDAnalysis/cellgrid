@@ -19,7 +19,8 @@ before_install:
 install:
   - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy nose
   # Coverage packages are on my binstar channel
-  - conda install --yes -c python-coveralls nose-cov
+  - pip install coveralls
+  - pip install nose-cov
   - python setup.py install
  
 # Run test
