@@ -12,11 +12,12 @@ with open('README.md') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'numpy (>=1.4.0)'
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+    'numpy (>=1.4.0)'
+    'nose'
 ]
 
 setup(
