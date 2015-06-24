@@ -4,8 +4,8 @@
 """
 import numpy as np
 
-from cellgrid import CellGrid
-from capped_distance import capped_distance_array
+from cellgrid.cellgrid import CellGrid
+from cellgrid.capped_distance import capped_distance_array
 
 
 class TestCappedDistanceArray(object):
