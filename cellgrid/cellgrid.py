@@ -22,7 +22,7 @@ was chosen so that interfacing with external C code was simpler.
 from __future__ import division, print_function
 
 import numpy as np
-from itertools import izip
+
 
 def _address_to_index(addr, ncells):
     """Return the cell index from a cell address

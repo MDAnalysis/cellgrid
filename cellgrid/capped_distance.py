@@ -6,7 +6,10 @@ capped_self_distance_array(cg1)
 
 """
 import numpy as np
-from itertools import izip
+try:
+    from itertools import izip
+except ImportError:
+    izip = zip
 
 def intra_distance_array(coords, indices,
                          out_d, out_idx,
