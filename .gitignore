@@ -1,2 +1,5 @@
 *.pyc
 *~
+build/*
+dist/*
+cellgrid.egg-info/*
