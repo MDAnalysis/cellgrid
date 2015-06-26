@@ -9,7 +9,7 @@ Terminology:
               (x, y, z), also uniquely identifies cells
 
 
-This is an implementation of a cell method as described in 
+This is an implementation of a cell method as described in
 Allen and Tildesley page 149.  Rather than using a linked list
 for each cell, coordinates are instead sorted according to their
 cells.  This then allows cells to be defined as a continuous slice
@@ -31,6 +31,7 @@ def _address_to_index(addr, ncells):
     """
     return addr[0] + addr[1] * ncells[0] + addr[2] * ncells[1] * ncells[0]
 
+
 def _index_to_address(cid, ncells):
     """Return the cell adress from a cell index
 
@@ -42,6 +43,7 @@ def _index_to_address(cid, ncells):
     cid %= ncells[0]
 
     return cid, y, z
+
 
 def _create_views(ncells, indices, coords, original):
     """Create a list relating a cell index to a view of the coords
@@ -64,8 +66,7 @@ def _create_views(ncells, indices, coords, original):
 
 
 class CellGrid(object):
-    """
-    Updating the CellGrid can be done by directly setting the attributes,
+    """Updating the CellGrid can be done by directly setting the attributes,
     this will automatically update the CellGrid contents.
 
     The update method allows many attributes to be changed simultaneously
@@ -96,23 +97,23 @@ class CellGrid(object):
         as everything is only recalculated once
         """
         coords = kwargs.pop('coordinates', False)
-        if not coords is False:
+        if coords is not False:
             self._coordinates = coords
         box = kwargs.pop('box', False)
-        if not box is False:
+        if box is not False:
             self._box = box
         max_dist = kwargs.pop('max_dist', False)
-        if not max_dist is False:
+        if max_dist is not False:
             self._max_dist = max_dist
 
         # Weird logic, but arrays don't evaluate to there
-        if (not box is False) or (not max_dist is False):
+        if (box is not False) or (max_dist is not False):
             self._determine_cell_dimensions()
         self._put_into_cells()
 
     def _determine_cell_dimensions(self):
         # number of cells in each direction
-        self._ncells = np.floor_divide(self._box, self._max_dist).astype(np.int)
+        self._ncells = (self._box // self._max_dist).astype(np.int)
         self._total_cells = np.product(self._ncells)
         # size of cell in each direction
         self._cell_size = self._box / self._ncells
@@ -128,7 +129,8 @@ class CellGrid(object):
         self._cell_addresses = self._coordinates // self._cell_size
         # Which cell each coordinate is in (as index)
         self._cell_indices = np.array([self._address_to_index(a)
-                                       for a in self._cell_addresses], dtype=np.int)
+                                       for a in self._cell_addresses],
+                                      dtype=np.int)
         # An array that puts everything into correct order
         self._order = self._cell_indices.argsort()
         # Coordinates sorted according to their cell
@@ -198,7 +200,7 @@ class CellGrid(object):
 
     def __getitem__(self, item):
         """Retrieve a single cell
-        
+
         Can use either an address (as np array or tuple) or integer index
         """
         # Internally, cells are stored in a dict of views
@@ -255,17 +257,20 @@ class Cell(object):
       indices
         The indices of the coordinates
     """
-    _half_route = np.array([[1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
-                            [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
-                            [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1]])
+    _half_route = np.array([
+        [1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
+        [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
+        [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1]
+    ])
 
-    _full_route = np.array([[1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
-                            [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
-                            [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1],
-                            [-1, 0, 0], [-1, -1, 0], [0, -1, 0], [1, -1, 0],
-                            [-1, 0, -1], [-1, -1, -1], [0, -1, -1], [1, -1, -1], [0, 0, -1],
-                            [-1, 0, 1], [-1, -1, 1], [0, -1, 1], [1, -1, 1]])
-
+    _full_route = np.array([
+        [1, 0, 0], [1, 1, 0], [0, 1, 0], [-1, 1, 0],
+        [1, 0, -1], [1, 1, -1], [0, 1, -1], [-1, 1, -1],
+        [1, 0, 1], [1, 1, 1], [0, 1, 1], [-1, 1, 1], [0, 0, 1],
+        [-1, 0, 0], [-1, -1, 0], [0, -1, 0], [1, -1, 0],
+        [-1, 0, -1], [-1, -1, -1], [0, -1, -1], [1, -1, -1], [0, 0, -1],
+        [-1, 0, 1], [-1, -1, 1], [0, -1, 1], [1, -1, 1]
+    ])
 
     # Cells are generated on demand by CellGrids, so they
     # should ideally be as light as possible

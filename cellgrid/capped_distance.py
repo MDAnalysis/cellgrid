@@ -11,6 +11,7 @@ try:
 except ImportError:
     izip = zip
 
+
 def intra_distance_array(coords, indices,
                          out_d, out_idx,
                          offset):
@@ -21,6 +22,7 @@ def intra_distance_array(coords, indices,
             out_idx[offset + pos] = ai, bi
             out_d[offset + pos] = dist(ac, bc)
             pos += 1
+
 
 def inter_distance_array(coords1, indices1,
                          coords2, indices2,
@@ -34,9 +36,11 @@ def inter_distance_array(coords1, indices1,
             out_d[offset + pos] = dist(ac, bc)
             pos += 1
 
+
 def dist(x, y):
     """Distance between two points"""
     return np.linalg.norm(x - y)
+
 
 def capped_distance_array(cg1, cg2, result=None):
     """Calculate all pairwise distances between pairs in cg1 and cg2
@@ -78,6 +82,7 @@ def capped_distance_array(cg1, cg2, result=None):
 
     return indices, dist
 
+
 def _calculate_distance_array_size(cg1, cg2):
     """Calculate the required size for results"""
     N = 0
@@ -94,6 +99,7 @@ def _calculate_distance_array_size(cg1, cg2):
             N += na * len(other)
     return N
 
+
 def capped_self_distance_array(cg1, result=None):
     """Calculate all pairwise distances within a certain CellGrid
 
@@ -105,8 +111,9 @@ def capped_self_distance_array(cg1, result=None):
     """
     pass
 
+
 def _allocate_self_results(cg):
-    """Pass back an index and coordinate array of correct size 
+    """Pass back an index and coordinate array of correct size
     for a capped self distance array
     """
     # N is the total number of comparisons we will make
@@ -124,4 +131,3 @@ def _allocate_self_results(cg):
     dists = np.zeros(N)
 
     return idx, dists
-
