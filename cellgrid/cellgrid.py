@@ -203,9 +203,11 @@ class CellGrid(object):
 
         Can use either an address (as np array or tuple) or integer index
         """
-        # Internally, cells are stored in a dict of views
+        # Internally, cells are stored in a list
+        # convert tuples to ndarrays
         if isinstance(item, tuple):
             item = np.array(item)
+        # and convert ndarrays to an integer
         if isinstance(item, np.ndarray):  # if address
             if self.periodic:
                 item = self._address_pbc(item)
