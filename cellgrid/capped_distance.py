@@ -26,6 +26,7 @@ def intra_distance_array(coords, indices,
 
 def inter_distance_array(coords1, indices1,
                          coords2, indices2,
+                         box,
                          out_d, out_idx,
                          offset):
     """Calculate all pairs within two sets of coords"""
@@ -33,13 +34,15 @@ def inter_distance_array(coords1, indices1,
     for ac, ai in izip(coords1, indices1):
         for bc, bi in izip(coords2, indices2):
             out_idx[offset + pos] = ai, bi
-            out_d[offset + pos] = dist(ac, bc)
+            out_d[offset + pos] = dist(ac, bc, box)
             pos += 1
 
 
-def dist(x, y):
-    """Distance between two points"""
-    return np.linalg.norm(x - y)
+def dist(x, y, b):
+    """Distance between two points with periodic boundaries"""
+    dx = y - x
+    dx -= np.rint(dx / b) * b
+    return np.sqrt((dx * dx).sum())
 
 
 def capped_distance_array(cg1, cg2, result=None):
@@ -61,7 +64,9 @@ def capped_distance_array(cg1, cg2, result=None):
     if result is None:
         dist = np.empty(Nreq, dtype=np.float32)
         indices = np.empty((Nreq, 2), dtype=np.int)
-    # check size of passed array
+    # TODO: check size of passed array if passed one
+
+    box = cg1.box
 
     # Calculate distances cell by cell
     pos = 0
@@ -69,6 +74,7 @@ def capped_distance_array(cg1, cg2, result=None):
         other = cg2[cell.address]
         inter_distance_array(cell.coordinates, cell.indices,
                              other.coordinates, other.indices,
+                             box,
                              dist, indices,
                              pos)
         pos += len(cell) * len(other)
@@ -76,6 +82,7 @@ def capped_distance_array(cg1, cg2, result=None):
             other = cg2[other_addr]
             inter_distance_array(cell.coordinates, cell.indices,
                                  other.coordinates, other.indices,
+                                 box,
                                  dist, indices,
                                  pos)
             pos += len(cell) * len(other)
