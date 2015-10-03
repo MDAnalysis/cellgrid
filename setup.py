@@ -11,7 +11,9 @@ import numpy
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-ext_modules = []
+ext_modules = [Extension('cgmath',
+                         ['cellgrid/cgmath.pyx'],
+                         include_dirs=[numpy.get_include()])]
 
 requirements = [
     'numpy>=1.4.0',
