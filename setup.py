@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from distutils.core import setup
+from distutils.extension import Extension
+from Cython.Distutils import build_ext
+import numpy
 
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
+
+ext_modules = []
 
 requirements = [
     'numpy>=1.4.0',
@@ -33,6 +35,8 @@ setup(
     ],
     package_dir={'cellgrid':
                  'cellgrid'},
+    cmdclass = {'build_ext': build_ext},
+    ext_modules = ext_modules,
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
