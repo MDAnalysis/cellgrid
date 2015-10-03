@@ -1,0 +1,5 @@
+Standard ways of running benchmarks as I hack this together
+
+Nice things to add:
+ - number of calls
+ - timed benchmarks
