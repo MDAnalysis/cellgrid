@@ -38,6 +38,7 @@ setup(
     package_dir={'cellgrid':
                  'cellgrid'},
     cmdclass = {'build_ext': build_ext},
+    ext_package = 'cellgrid',
     ext_modules = ext_modules,
     include_package_data=True,
     install_requires=requirements,
