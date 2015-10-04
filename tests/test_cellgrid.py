@@ -1,7 +1,7 @@
 import numpy as np
 
-from cellgrid.cellgrid import (CellGrid, _address_to_index, _index_to_address,
-                               _create_views)
+from cellgrid.core import (CellGrid, _address_to_index, _index_to_address,
+                           _create_views)
 
 
 class TestCellDetermining(object):

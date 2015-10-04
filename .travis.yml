@@ -23,12 +23,11 @@ before_install:
 install:
   - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy nose cython
   - pip install coveralls
-  - pip install nose-cov
-  - python setup.py install
+  - python setup.py develop
  
 # Run test
 script:
-  - nosetests --with-cov --cov cellgrid --cov-config .coveragerc --logging-level=INFO
+  - nosetests --with-coverage --cover-package=cellgrid
  
 # Calculate coverage
 after_success:
