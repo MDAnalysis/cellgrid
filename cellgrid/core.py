@@ -23,7 +23,6 @@ from __future__ import division, print_function
 
 import numpy as np
 
-from .cgmath import inter_distance_array as ida
 
 def _address_to_index(addr, ncells):
     """Return the cell index from a cell address

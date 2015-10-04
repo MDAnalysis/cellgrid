@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+from . import cgmath
 from . import core
 from . import capped_distance
-from . import cgmath
 from .core import CellGrid, Cell
 from .capped_distance import capped_distance_array
 
