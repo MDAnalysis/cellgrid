@@ -10,6 +10,7 @@ try:
     from itertools import izip
 except ImportError:
     izip = zip
+import itertools
 
 
 def intra_distance_array(coords, indices,
@@ -70,16 +71,11 @@ def capped_distance_array(cg1, cg2, result=None):
 
     # Calculate distances cell by cell
     pos = 0
+    # For each cell in cg1
     for cell in cg1:
-        other = cg2[cell.address]
-        inter_distance_array(cell.coordinates, cell.indices,
-                             other.coordinates, other.indices,
-                             box,
-                             dist, indices,
-                             pos)
-        pos += len(cell) * len(other)
-        for other_addr in other.all_neighbours:
-            other = cg2[other_addr]
+        # Iterate over all neighbours in other cellgrid
+        for addr in itertools.chain([cell.address], cell.all_neighbours):
+            other = cg2[addr]
             inter_distance_array(cell.coordinates, cell.indices,
                                  other.coordinates, other.indices,
                                  box,
@@ -95,13 +91,8 @@ def _calculate_distance_array_size(cg1, cg2):
     N = 0
     for cell in cg1:
         na = len(cell)
-        addr = cell.address
-        # Find corresponding cell in other cg
-        other = cg2[addr]
-        N += na * len(other)
-        # Loop over all 26 neighbours to this cell
-        for neb_addr in cell.all_neighbours:
-            # And retreve that cell in the other cg
+        for neb_addr in itertools.chain([cell.address], cell.all_neighbours):
+            # Find corresponding cell in other cg
             other = cg2[neb_addr]
             N += na * len(other)
     return N
