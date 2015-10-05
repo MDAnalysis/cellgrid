@@ -23,7 +23,7 @@ def slow_inter_distance_withpbc(a, b, box):
     c = a - b[:, None]
     c = c - np.rint(c / box) * box
     c = np.sqrt((c * c).sum(axis=-1))
-    return c
+    return np.ravel(c)
 
 
 def slow_intra_distance_nopbc(a):
