@@ -4,12 +4,11 @@ import itertools
 
 from cellgrid import cgmath
 
+import util
 
 class TestInterDistanceNoPBC(object):
     def _manual(self, a, b):
-        c = a - b[:,None]
-        c = np.sqrt((c * c).sum(axis=-1))
-        return np.ravel(c)
+        return util.slow_inter_distance_nopbc(a, b)
 
     def test_1(self):
         a = np.arange(30).reshape(10, 3).astype(np.float32)
@@ -22,22 +21,10 @@ class TestInterDistanceNoPBC(object):
 
         assert_array_almost_equal(ref, res)
 
+
 class TestIntraDistanceNoPBC(object):
     def _manual(self, a):
-        def dist(x, y):
-            v = x - y
-            return np.sqrt(np.dot(v, v))
-
-        n = a.shape[0]
-        ref = np.zeros(n*(n-1)/2)
-
-        pos = 0
-        for i in range(n):
-            for j in range(i+1, n):
-                ref[pos] = dist(a[i], a[j])
-                pos += 1
-
-        return ref
+        return util.slow_intra_distance_nopbc(a)
 
     def test_1(self):
         a = np.arange(30).reshape(10, 3).astype(np.float32)
