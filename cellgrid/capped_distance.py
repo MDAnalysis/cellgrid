@@ -12,6 +12,7 @@ except ImportError:
     izip = zip
 import itertools
 
+from cellgrid import cgmath
 
 def intra_distance_array(coords, indices,
                          out_d, out_idx,
@@ -76,11 +77,17 @@ def capped_distance_array(cg1, cg2, result=None):
         # Iterate over all neighbours in other cellgrid
         for addr in itertools.chain([cell.address], cell.all_neighbours):
             other = cg2[addr]
-            inter_distance_array(cell.coordinates, cell.indices,
-                                 other.coordinates, other.indices,
-                                 box,
-                                 dist, indices,
-                                 pos)
+            cgmath.inter_distance_array_withpbc(
+                cell.coordinates,
+                other.coordinates,
+                box,
+                dist[pos:]
+            )
+            cgmath.inter_index_array(
+                cell.indices,
+                other.indices,
+                indices[pos:]
+            )
             pos += len(cell) * len(other)
 
     return indices, dist

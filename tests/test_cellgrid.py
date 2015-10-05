@@ -164,7 +164,7 @@ class TestViewCreator(object):
     def test_create_cg_views(self):
         points = np.array([[0.8, 0.8, 0.8],
                            [0.1, 0.1, 0.1],
-                           [0.9, 0.9, 0.9]])
+                           [0.9, 0.9, 0.9]], dtype=np.float32)
 
         cg = CellGrid(box=np.ones(3), max_dist=0.25, coordinates=points)
 
@@ -179,7 +179,7 @@ class TestViewCreator(object):
         # 2 coordinates in cell 7 (last)
         points = np.array([[0.8, 0.8, 0.8],
                            [0.1, 0.1, 0.1],
-                           [0.9, 0.9, 0.9]])
+                           [0.9, 0.9, 0.9]], dtype=np.float32)
 
         cg = CellGrid(box=np.ones(3), max_dist=0.50,
                       coordinates=points)
