@@ -13,7 +13,7 @@ class TestInterDistanceNoPBC(object):
         res = np.zeros(100).astype(np.float32)
 
         cgmath.inter_distance_array_nopbc(a, b, res)
-        ref = util.slow_inter_distance_nopbc(a, b)
+        ref = np.ravel(util.slow_inter_distance_nopbc(a, b))
 
         assert_array_almost_equal(ref, res)
 
@@ -26,7 +26,7 @@ class TestInterDistanceWithPBC(object):
         box = np.ones(3).astype(np.float32) * 30
 
         cgmath.inter_distance_array_withpbc(a, b, box, res)
-        ref = util.slow_inter_distance_withpbc(a, b, box)
+        ref = np.ravel(util.slow_inter_distance_withpbc(a, b, box))
 
         assert_array_almost_equal(ref, res)
 
