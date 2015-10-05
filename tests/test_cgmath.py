@@ -5,7 +5,7 @@ import itertools
 from cellgrid import cgmath
 
 
-class TestInterDistance(object):
+class TestInterDistanceNoPBC(object):
     def _manual(self, a, b):
         c = a - b[:,None]
         c = np.sqrt((c * c).sum(axis=-1))
@@ -16,13 +16,13 @@ class TestInterDistance(object):
         b = np.arange(30).reshape(10, 3).astype(np.float32)
         res = np.zeros(100).astype(np.float32)
 
-        cgmath.inter_distance_array(a, b, res)
+        cgmath.inter_distance_array_nopbc(a, b, res)
 
         ref = self._manual(a, b)
 
         assert_array_almost_equal(ref, res)
 
-class TestIntraDistance(object):
+class TestIntraDistanceNoPBC(object):
     def _manual(self, a):
         def dist(x, y):
             v = x - y
@@ -44,7 +44,7 @@ class TestIntraDistance(object):
         n = 10
         res = np.zeros(n * (n-1) // 2, dtype=np.float32)
 
-        cgmath.intra_distance_array(a, res)
+        cgmath.intra_distance_array_nopbc(a, res)
 
         ref = self._manual(a)
 

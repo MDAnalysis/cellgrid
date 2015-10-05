@@ -7,6 +7,10 @@ then we could compile twice with different precision each time.
 distance_arrays
 Calculate distance between points
 
+Comes in two flavours:
+ - nopbc (no periodic boundaries)
+ - withpbc (with periodic boundaries, penultimate argument is box data)
+
 index_arrays
 Combine two arrays of indices into a (n*m, 2)
 
@@ -29,9 +33,9 @@ ctypedef np.float32_t DTYPE_t
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def inter_distance_array(np.ndarray[np.float32_t, ndim=2] coords1,
-                         np.ndarray[np.float32_t, ndim=2] coords2,
-                         np.ndarray[np.float32_t, ndim=1] results):
+def inter_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,
+                               np.ndarray[np.float32_t, ndim=2] coords2,
+                               np.ndarray[np.float32_t, ndim=1] results):
     cdef Py_ssize_t i, j, k, pos
     cdef DTYPE_t rsq, dx[3], rij[3]
 
@@ -52,8 +56,39 @@ def inter_distance_array(np.ndarray[np.float32_t, ndim=2] coords1,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def intra_distance_array(np.ndarray[np.float32_t, ndim=2] coords1,
-                         np.ndarray[np.float32_t, ndim=1] results):
+def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
+                                 np.ndarray[np.float32_t, ndim=2] coords2,
+                                 np.ndarray[np.float32_t, ndim=1] box,
+                                 np.ndarray[np.float32_t, ndim=1] results):
+
+    cdef Py_ssize_t i, j, k, pos
+    cdef DTYPE_t rsq, dx[3], rij[3], binv[3]
+
+    for k in range(3):
+        binv[k] = 1.0 / box[k]
+
+    pos = 0
+
+    for i in range(coords1.shape[0]):
+        for k in range(3):
+            rij[k] = coords1[i, k]
+
+        for j in range(coords2.shape[0]):
+            for k in range(3):
+                dx[k] = rij[k] - coords2[j, k]
+            # Periodic boundaries
+            for k in range(3):
+                dx[k] -= round(dx[k] * binv[k]) * box[k]
+            rsq = 0.0
+            for k in range(3):
+                rsq += dx[k] * dx[k]
+            results[pos] = sqrt(rsq)
+            pos += 1
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+def intra_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,
+                               np.ndarray[np.float32_t, ndim=1] results):
     cdef Py_ssize_t i, j, k, pos
     cdef DTYPE_t rsq, dx[3], rij[3]
 
@@ -66,6 +101,37 @@ def intra_distance_array(np.ndarray[np.float32_t, ndim=2] coords1,
         for j in range(i + 1, coords1.shape[0]):
             for k in range(3):
                 dx[k] = rij[k] - coords1[j, k]
+            rsq = 0.0
+            for k in range(3):
+                rsq += dx[k] * dx[k]
+            results[pos] = sqrt(rsq)
+            pos += 1
+            
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
+                                 np.ndarray[np.float32_t, ndim=1] box,
+                                 np.ndarray[np.float32_t, ndim=1] results):
+    cdef Py_ssize_t i, j, k, pos
+    cdef DTYPE_t rsq, dx[3], rij[3], binv[3]
+
+    for k in range(3):
+        binv[k] = 1.0 / box[k]
+
+    pos = 0
+
+    for i in range(coords1.shape[0]):
+        for k in range(3):
+            rij[k] = coords1[i, k]
+
+        for j in range(i + 1, coords1.shape[0]):
+            for k in range(3):
+                dx[k] = rij[k] - coords1[j, k]
+            # Periodic boundaries
+            for k in range(3):
+                dx[k] -= round(dx[k] * binv[k]) * box[k]
+
             rsq = 0.0
             for k in range(3):
                 rsq += dx[k] * dx[k]
