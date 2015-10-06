@@ -6,8 +6,11 @@ import numpy as np
 from numpy.testing import assert_raises
 
 from cellgrid import CellGrid
-from cellgrid import cellgrid_distance_array
 from cellgrid import cgmath
+from cellgrid import (
+    cellgrid_distance_array,
+    capped_distance_array,
+)
 
 class TestCappedDistanceArray(object):
     prec = np.float32
@@ -150,9 +153,7 @@ class TestRandomCappedWithPBC(object):
         b = (np.random.random(n * 3).reshape(n, 3) * boxsize).astype(self.prec)
         box = (np.ones(3) * boxsize).astype(self.prec)
 
-        cga = CellGrid(box, d_max, a)
-        cgb = CellGrid(box, d_max, b)
-        idx, dists = cellgrid_distance_array(cga, cgb)
+        idx, dists = capped_distance_array(a, b, d_max, box)
 
         # Brute force approach, do all n * n comparisons
         ref = np.zeros(n * n, dtype=np.float32)
