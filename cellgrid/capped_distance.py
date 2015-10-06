@@ -13,6 +13,7 @@ except ImportError:
 import itertools
 
 from cellgrid import cgmath
+from cellgrid.core import CellGrid
 
 def intra_distance_array(coords, indices,
                          out_d, out_idx,
@@ -47,7 +48,18 @@ def dist(x, y, b):
     return np.sqrt((dx * dx).sum())
 
 
-def capped_distance_array(cg1, cg2, result=None):
+def capped_distance_array(a, b, max_dist, box=None, result=None):
+    """Calculate all pairwise distances between *a* and *b* up to *max_dist*
+
+    If given, *box* defines the unit cell size for periodic boundaries
+    """
+    cga = CellGrid(box, max_dist, a)
+    cgb = CellGrid(box, max_dist, b)
+
+    return cellgrid_distance_array(cga, cgb, result=result)
+
+
+def cellgrid_distance_array(cg1, cg2, result=None):
     """Calculate all pairwise distances between pairs in cg1 and cg2
 
     :Returns:

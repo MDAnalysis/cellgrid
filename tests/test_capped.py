@@ -6,7 +6,7 @@ import numpy as np
 from numpy.testing import assert_raises
 
 from cellgrid import CellGrid
-from cellgrid import capped_distance_array
+from cellgrid import cellgrid_distance_array
 from cellgrid import cgmath
 
 class TestCappedDistanceArray(object):
@@ -23,7 +23,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box, 1.0, grid)
         cg2 = CellGrid(box, 1.0, probe)
 
-        idx, dists = capped_distance_array(cg1, cg2)
+        idx, dists = cellgrid_distance_array(cg1, cg2)
 
         # Probe should have seen 27 points
         assert len(dists) == 27
@@ -42,7 +42,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box, 1.0, grid)
         cg2 = CellGrid(box, 1.0, probe)
 
-        idx, dists = capped_distance_array(cg1, cg2)
+        idx, dists = cellgrid_distance_array(cg1, cg2)
 
         # Probe should have seen 27 points
         assert len(dists) == 27
@@ -61,7 +61,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box, 1.0, grid)
         cg2 = CellGrid(box, 1.0, probe)
 
-        idx, dists = capped_distance_array(cg1, cg2)
+        idx, dists = cellgrid_distance_array(cg1, cg2)
 
         # Probe should have seen 27 points
         assert len(dists) == 27
@@ -75,7 +75,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box, 1.0, point1)
         cg2 = CellGrid(box, 1.0, point2)
 
-        idx, dists = capped_distance_array(cg1, cg2)
+        idx, dists = cellgrid_distance_array(cg1, cg2)
 
         assert (idx[0] == (0, 0)).all()
         assert dists[0] == 1.0
@@ -92,7 +92,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box, 0.5, grid)
         cg2 = CellGrid(box, 0.5, probe)
 
-        idx, dists = capped_distance_array(cg1, cg2)
+        idx, dists = cellgrid_distance_array(cg1, cg2)
 
         # Probe should have seen 8 points
         assert len(dists) == 8
@@ -108,7 +108,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box1, 0.5, point1)
         cg2 = CellGrid(box2, 0.5, point2)
 
-        assert_raises(ValueError, capped_distance_array, cg1, cg2)
+        assert_raises(ValueError, cellgrid_distance_array, cg1, cg2)
 
     def test_compatibility_2(self):
         # Same box volume, will have differing number of cells in
@@ -122,7 +122,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box1, 0.5, point1)
         cg2 = CellGrid(box2, 0.5, point2)
 
-        assert_raises(ValueError, capped_distance_array, cg1, cg2)
+        assert_raises(ValueError, cellgrid_distance_array, cg1, cg2)
 
     def test_compatibility_3(self):
         # Same box size, different cutoff
@@ -135,7 +135,7 @@ class TestCappedDistanceArray(object):
         cg1 = CellGrid(box1, 0.5, point1)
         cg2 = CellGrid(box2, 0.25, point2)
 
-        assert_raises(ValueError, capped_distance_array, cg1, cg2)
+        assert_raises(ValueError, cellgrid_distance_array, cg1, cg2)
 
 
 class TestRandomCappedWithPBC(object):
@@ -152,7 +152,7 @@ class TestRandomCappedWithPBC(object):
 
         cga = CellGrid(box, d_max, a)
         cgb = CellGrid(box, d_max, b)
-        idx, dists = capped_distance_array(cga, cgb)
+        idx, dists = cellgrid_distance_array(cga, cgb)
 
         # Brute force approach, do all n * n comparisons
         ref = np.zeros(n * n, dtype=np.float32)
