@@ -7,8 +7,10 @@ from .core import (
     Cell,
 )
 from .capped_distance import (
-    cellgrid_distance_array,
     capped_distance_array,
+    capped_self_distance_array,
+    cellgrid_distance_array,
+    cellgrid_self_distance_array,
 )
 
 __author__ = 'Richard J Gowers'

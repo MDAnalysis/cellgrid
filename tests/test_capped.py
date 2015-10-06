@@ -10,7 +10,10 @@ from cellgrid import cgmath
 from cellgrid import (
     cellgrid_distance_array,
     capped_distance_array,
+    cellgrid_self_distance_array,
+    capped_self_distance_array,
 )
+
 
 class TestCappedDistanceArray(object):
     prec = np.float32
@@ -156,7 +159,7 @@ class TestRandomCappedWithPBC(object):
         idx, dists = capped_distance_array(a, b, d_max, box)
 
         # Brute force approach, do all n * n comparisons
-        ref = np.zeros(n * n, dtype=np.float32)
+        ref = np.zeros(n * n, dtype=self.prec)
         cgmath.inter_distance_array_withpbc(a, b, box, ref)
         ref = ref.reshape(n, n)
 
@@ -167,5 +170,31 @@ class TestRandomCappedWithPBC(object):
             assert (x, y in idx) or (y, x in idx)
         # Check all reported distances were accurate
         # ie, ref[idx[i]] == dists[i]
+        for (i, j), d in zip(idx, dists):
+            assert ref[i, j] == d
+
+
+class TestRandomSelfArray(object):
+    prec = np.float32
+    def test_1(self):
+        n = 100
+        boxsize = 10.0
+        d_max = 2.0
+
+        a = (np.random.random(n * 3).reshape(n, 3) * boxsize).astype(self.prec)
+        box = (np.ones(3) * boxsize).astype(self.prec)
+
+        idx, dists = capped_self_distance_array(a, d_max, box)
+
+        ref = np.zeros(n * n, dtype=self.prec)
+        cgmath.inter_distance_array_withpbc(a, a, box, ref)
+        ref = ref.reshape(n, n)
+        # Mask out coordinates seeing themselves
+        ref[np.diag_indices_from(ref)] = d_max + 1.0
+
+        ref_idx = np.where(ref < d_max)
+        for x, y in zip(ref_idx[0], ref_idx[1]):
+            assert (x, y in idx) or (y, x in idx)
+
         for (i, j), d in zip(idx, dists):
             assert ref[i, j] == d
