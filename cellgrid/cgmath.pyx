@@ -62,23 +62,24 @@ def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
                                  np.ndarray[np.float32_t, ndim=1] results):
 
     cdef Py_ssize_t i, j, k, pos
-    cdef DTYPE_t rsq, dx[3], rij[3], binv[3]
+    cdef DTYPE_t rsq, dx[3], bhalf[3]
 
     for k in range(3):
-        binv[k] = 1.0 / box[k]
+        bhalf[k] = box[k] / 2.0
 
     pos = 0
 
     for i in range(coords1.shape[0]):
-        for k in range(3):
-            rij[k] = coords1[i, k]
-
         for j in range(coords2.shape[0]):
             for k in range(3):
-                dx[k] = rij[k] - coords2[j, k]
+                dx[k] = coords1[i, k] - coords2[j, k]
             # Periodic boundaries
             for k in range(3):
-                dx[k] -= round(dx[k] * binv[k]) * box[k]
+                if abs(dx[k]) > bhalf[k]:
+                    if dx[k] < 0:
+                        dx[k] += box[k]
+                    else:
+                        dx[k] -= box[k]
             rsq = 0.0
             for k in range(3):
                 rsq += dx[k] * dx[k]
@@ -114,24 +115,24 @@ def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
                                  np.ndarray[np.float32_t, ndim=1] box,
                                  np.ndarray[np.float32_t, ndim=1] results):
     cdef Py_ssize_t i, j, k, pos
-    cdef DTYPE_t rsq, dx[3], rij[3], binv[3]
+    cdef DTYPE_t rsq, dx[3], bhalf[3]
 
     for k in range(3):
-        binv[k] = 1.0 / box[k]
+        bhalf[k] = box[k] / 2.0
 
     pos = 0
 
     for i in range(coords1.shape[0]):
-        for k in range(3):
-            rij[k] = coords1[i, k]
-
         for j in range(i + 1, coords1.shape[0]):
             for k in range(3):
-                dx[k] = rij[k] - coords1[j, k]
+                dx[k] = coords1[i, k] - coords1[j, k]
             # Periodic boundaries
             for k in range(3):
-                dx[k] -= round(dx[k] * binv[k]) * box[k]
-
+                if abs(dx[k]) > bhalf[k]:
+                    if dx[k] < 0:
+                        dx[k] += box[k]
+                    else:
+                        dx[k] -= box[k]
             rsq = 0.0
             for k in range(3):
                 rsq += dx[k] * dx[k]
