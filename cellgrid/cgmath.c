@@ -700,7 +700,7 @@ typedef npy_double __pyx_t_5numpy_double_t;
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "cgmath.pyx":32
+/* "cgmath.pyx":34
  * 
  * DTYPE = np.float32
  * ctypedef np.float32_t DTYPE_t             # <<<<<<<<<<<<<<
@@ -1108,6 +1108,8 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
+/* Module declarations from 'libc.math' */
+
 /* Module declarations from 'cgmath' */
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t = { "float32_t", NULL, sizeof(__pyx_t_5numpy_float32_t), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t = { "int64_t", NULL, sizeof(__pyx_t_5numpy_int64_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_int64_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_int64_t), 0 };
@@ -1240,7 +1242,7 @@ static PyObject *__pyx_codeobj__14;
 static PyObject *__pyx_codeobj__16;
 static PyObject *__pyx_codeobj__18;
 
-/* "cgmath.pyx":36
+/* "cgmath.pyx":38
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -1282,16 +1284,16 @@ static PyObject *__pyx_pw_6cgmath_1inter_distance_array_nopbc(PyObject *__pyx_se
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_coords2)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("inter_distance_array_nopbc", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("inter_distance_array_nopbc", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_results)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("inter_distance_array_nopbc", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("inter_distance_array_nopbc", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "inter_distance_array_nopbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "inter_distance_array_nopbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -1306,15 +1308,15 @@ static PyObject *__pyx_pw_6cgmath_1inter_distance_array_nopbc(PyObject *__pyx_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("inter_distance_array_nopbc", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("inter_distance_array_nopbc", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("cgmath.inter_distance_array_nopbc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords2), __pyx_ptype_5numpy_ndarray, 1, "coords2", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 37; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords2), __pyx_ptype_5numpy_ndarray, 1, "coords2", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 39; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 40; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_6cgmath_inter_distance_array_nopbc(__pyx_self, __pyx_v_coords1, __pyx_v_coords2, __pyx_v_results);
 
   /* function exit code */
@@ -1370,21 +1372,21 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
   __pyx_pybuffernd_results.rcbuffer = &__pyx_pybuffer_results;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_coords1.diminfo[0].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords1.diminfo[0].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords1.diminfo[1].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords1.diminfo[1].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords2.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords2, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords2.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords2, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_coords2.diminfo[0].strides = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords2.diminfo[0].shape = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords2.diminfo[1].strides = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords2.diminfo[1].shape = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_results.diminfo[0].strides = __pyx_pybuffernd_results.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_results.diminfo[0].shape = __pyx_pybuffernd_results.rcbuffer->pybuffer.shape[0];
 
-  /* "cgmath.pyx":42
+  /* "cgmath.pyx":44
  *     cdef DTYPE_t rsq, dx[3], rij[3]
  * 
  *     pos = 0             # <<<<<<<<<<<<<<
@@ -1393,7 +1395,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
  */
   __pyx_v_pos = 0;
 
-  /* "cgmath.pyx":44
+  /* "cgmath.pyx":46
  *     pos = 0
  * 
  *     for i in range(coords1.shape[0]):             # <<<<<<<<<<<<<<
@@ -1404,7 +1406,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "cgmath.pyx":45
+    /* "cgmath.pyx":47
  * 
  *     for i in range(coords1.shape[0]):
  *         for k in range(3):             # <<<<<<<<<<<<<<
@@ -1414,7 +1416,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
     for (__pyx_t_3 = 0; __pyx_t_3 < 3; __pyx_t_3+=1) {
       __pyx_v_k = __pyx_t_3;
 
-      /* "cgmath.pyx":46
+      /* "cgmath.pyx":48
  *     for i in range(coords1.shape[0]):
  *         for k in range(3):
  *             rij[k] = coords1[i, k]             # <<<<<<<<<<<<<<
@@ -1426,7 +1428,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
       (__pyx_v_rij[__pyx_v_k]) = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords1.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_coords1.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_coords1.diminfo[1].strides));
     }
 
-    /* "cgmath.pyx":48
+    /* "cgmath.pyx":50
  *             rij[k] = coords1[i, k]
  * 
  *         for j in range(coords2.shape[0]):             # <<<<<<<<<<<<<<
@@ -1437,7 +1439,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
     for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_6; __pyx_t_3+=1) {
       __pyx_v_j = __pyx_t_3;
 
-      /* "cgmath.pyx":49
+      /* "cgmath.pyx":51
  * 
  *         for j in range(coords2.shape[0]):
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -1447,7 +1449,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
       for (__pyx_t_7 = 0; __pyx_t_7 < 3; __pyx_t_7+=1) {
         __pyx_v_k = __pyx_t_7;
 
-        /* "cgmath.pyx":50
+        /* "cgmath.pyx":52
  *         for j in range(coords2.shape[0]):
  *             for k in range(3):
  *                 dx[k] = rij[k] - coords2[j, k]             # <<<<<<<<<<<<<<
@@ -1459,7 +1461,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
         (__pyx_v_dx[__pyx_v_k]) = ((__pyx_v_rij[__pyx_v_k]) - (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords2.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_coords2.diminfo[0].strides, __pyx_t_9, __pyx_pybuffernd_coords2.diminfo[1].strides)));
       }
 
-      /* "cgmath.pyx":51
+      /* "cgmath.pyx":53
  *             for k in range(3):
  *                 dx[k] = rij[k] - coords2[j, k]
  *             rsq = 0.0             # <<<<<<<<<<<<<<
@@ -1468,7 +1470,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
  */
       __pyx_v_rsq = 0.0;
 
-      /* "cgmath.pyx":52
+      /* "cgmath.pyx":54
  *                 dx[k] = rij[k] - coords2[j, k]
  *             rsq = 0.0
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -1478,7 +1480,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
       for (__pyx_t_7 = 0; __pyx_t_7 < 3; __pyx_t_7+=1) {
         __pyx_v_k = __pyx_t_7;
 
-        /* "cgmath.pyx":53
+        /* "cgmath.pyx":55
  *             rsq = 0.0
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]             # <<<<<<<<<<<<<<
@@ -1488,7 +1490,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
         __pyx_v_rsq = (__pyx_v_rsq + ((__pyx_v_dx[__pyx_v_k]) * (__pyx_v_dx[__pyx_v_k])));
       }
 
-      /* "cgmath.pyx":54
+      /* "cgmath.pyx":56
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)             # <<<<<<<<<<<<<<
@@ -1498,7 +1500,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
       __pyx_t_10 = __pyx_v_pos;
       *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_results.rcbuffer->pybuffer.buf, __pyx_t_10, __pyx_pybuffernd_results.diminfo[0].strides) = sqrt(__pyx_v_rsq);
 
-      /* "cgmath.pyx":55
+      /* "cgmath.pyx":57
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)
  *             pos += 1             # <<<<<<<<<<<<<<
@@ -1509,7 +1511,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
     }
   }
 
-  /* "cgmath.pyx":36
+  /* "cgmath.pyx":38
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -1540,7 +1542,7 @@ static PyObject *__pyx_pf_6cgmath_inter_distance_array_nopbc(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "cgmath.pyx":59
+/* "cgmath.pyx":61
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -1584,21 +1586,21 @@ static PyObject *__pyx_pw_6cgmath_3inter_distance_array_withpbc(PyObject *__pyx_
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_coords2)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_box)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_results)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "inter_distance_array_withpbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "inter_distance_array_withpbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -1615,16 +1617,16 @@ static PyObject *__pyx_pw_6cgmath_3inter_distance_array_withpbc(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("inter_distance_array_withpbc", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("cgmath.inter_distance_array_withpbc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords2), __pyx_ptype_5numpy_ndarray, 1, "coords2", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 60; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_box), __pyx_ptype_5numpy_ndarray, 1, "box", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords2), __pyx_ptype_5numpy_ndarray, 1, "coords2", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_box), __pyx_ptype_5numpy_ndarray, 1, "box", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_6cgmath_2inter_distance_array_withpbc(__pyx_self, __pyx_v_coords1, __pyx_v_coords2, __pyx_v_box, __pyx_v_results);
 
   /* function exit code */
@@ -1691,26 +1693,26 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
   __pyx_pybuffernd_results.rcbuffer = &__pyx_pybuffer_results;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_coords1.diminfo[0].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords1.diminfo[0].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords1.diminfo[1].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords1.diminfo[1].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords2.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords2, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords2.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords2, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_coords2.diminfo[0].strides = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords2.diminfo[0].shape = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords2.diminfo[1].strides = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords2.diminfo[1].shape = __pyx_pybuffernd_coords2.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_box.rcbuffer->pybuffer, (PyObject*)__pyx_v_box, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_box.rcbuffer->pybuffer, (PyObject*)__pyx_v_box, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_box.diminfo[0].strides = __pyx_pybuffernd_box.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_box.diminfo[0].shape = __pyx_pybuffernd_box.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_results.diminfo[0].strides = __pyx_pybuffernd_results.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_results.diminfo[0].shape = __pyx_pybuffernd_results.rcbuffer->pybuffer.shape[0];
 
-  /* "cgmath.pyx":67
+  /* "cgmath.pyx":69
  *     cdef DTYPE_t rsq, dx[3], bhalf[3]
  * 
  *     for k in range(3):             # <<<<<<<<<<<<<<
@@ -1720,7 +1722,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
   for (__pyx_t_1 = 0; __pyx_t_1 < 3; __pyx_t_1+=1) {
     __pyx_v_k = __pyx_t_1;
 
-    /* "cgmath.pyx":68
+    /* "cgmath.pyx":70
  * 
  *     for k in range(3):
  *         bhalf[k] = box[k] / 2.0             # <<<<<<<<<<<<<<
@@ -1731,7 +1733,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
     (__pyx_v_bhalf[__pyx_v_k]) = ((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_box.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_box.diminfo[0].strides)) / 2.0);
   }
 
-  /* "cgmath.pyx":70
+  /* "cgmath.pyx":72
  *         bhalf[k] = box[k] / 2.0
  * 
  *     pos = 0             # <<<<<<<<<<<<<<
@@ -1740,7 +1742,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
  */
   __pyx_v_pos = 0;
 
-  /* "cgmath.pyx":72
+  /* "cgmath.pyx":74
  *     pos = 0
  * 
  *     for i in range(coords1.shape[0]):             # <<<<<<<<<<<<<<
@@ -1751,7 +1753,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
   for (__pyx_t_1 = 0; __pyx_t_1 < __pyx_t_3; __pyx_t_1+=1) {
     __pyx_v_i = __pyx_t_1;
 
-    /* "cgmath.pyx":73
+    /* "cgmath.pyx":75
  * 
  *     for i in range(coords1.shape[0]):
  *         for j in range(coords2.shape[0]):             # <<<<<<<<<<<<<<
@@ -1762,7 +1764,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_j = __pyx_t_5;
 
-      /* "cgmath.pyx":74
+      /* "cgmath.pyx":76
  *     for i in range(coords1.shape[0]):
  *         for j in range(coords2.shape[0]):
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -1772,7 +1774,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
       for (__pyx_t_6 = 0; __pyx_t_6 < 3; __pyx_t_6+=1) {
         __pyx_v_k = __pyx_t_6;
 
-        /* "cgmath.pyx":75
+        /* "cgmath.pyx":77
  *         for j in range(coords2.shape[0]):
  *             for k in range(3):
  *                 dx[k] = coords1[i, k] - coords2[j, k]             # <<<<<<<<<<<<<<
@@ -1786,29 +1788,29 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
         (__pyx_v_dx[__pyx_v_k]) = ((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords1.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_coords1.diminfo[0].strides, __pyx_t_8, __pyx_pybuffernd_coords1.diminfo[1].strides)) - (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords2.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_coords2.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_coords2.diminfo[1].strides)));
       }
 
-      /* "cgmath.pyx":77
+      /* "cgmath.pyx":79
  *                 dx[k] = coords1[i, k] - coords2[j, k]
  *             # Periodic boundaries
  *             for k in range(3):             # <<<<<<<<<<<<<<
- *                 if abs(dx[k]) > bhalf[k]:
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:
  */
       for (__pyx_t_6 = 0; __pyx_t_6 < 3; __pyx_t_6+=1) {
         __pyx_v_k = __pyx_t_6;
 
-        /* "cgmath.pyx":78
+        /* "cgmath.pyx":80
  *             # Periodic boundaries
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
+ *                 if fabs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
  *                     if dx[k] < 0:
  *                         dx[k] += box[k]
  */
-        __pyx_t_11 = ((fabsf((__pyx_v_dx[__pyx_v_k])) > (__pyx_v_bhalf[__pyx_v_k])) != 0);
+        __pyx_t_11 = ((fabs((__pyx_v_dx[__pyx_v_k])) > (__pyx_v_bhalf[__pyx_v_k])) != 0);
         if (__pyx_t_11) {
 
-          /* "cgmath.pyx":79
+          /* "cgmath.pyx":81
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:             # <<<<<<<<<<<<<<
  *                         dx[k] += box[k]
  *                     else:
@@ -1816,8 +1818,8 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
           __pyx_t_11 = (((__pyx_v_dx[__pyx_v_k]) < 0.0) != 0);
           if (__pyx_t_11) {
 
-            /* "cgmath.pyx":80
- *                 if abs(dx[k]) > bhalf[k]:
+            /* "cgmath.pyx":82
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:
  *                         dx[k] += box[k]             # <<<<<<<<<<<<<<
  *                     else:
@@ -1827,9 +1829,9 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
             __pyx_t_13 = __pyx_v_k;
             (__pyx_v_dx[__pyx_t_12]) = ((__pyx_v_dx[__pyx_t_12]) + (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_box.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_box.diminfo[0].strides)));
 
-            /* "cgmath.pyx":79
+            /* "cgmath.pyx":81
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:             # <<<<<<<<<<<<<<
  *                         dx[k] += box[k]
  *                     else:
@@ -1837,7 +1839,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
             goto __pyx_L14;
           }
 
-          /* "cgmath.pyx":82
+          /* "cgmath.pyx":84
  *                         dx[k] += box[k]
  *                     else:
  *                         dx[k] -= box[k]             # <<<<<<<<<<<<<<
@@ -1851,17 +1853,17 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
           }
           __pyx_L14:;
 
-          /* "cgmath.pyx":78
+          /* "cgmath.pyx":80
  *             # Periodic boundaries
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
+ *                 if fabs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
  *                     if dx[k] < 0:
  *                         dx[k] += box[k]
  */
         }
       }
 
-      /* "cgmath.pyx":83
+      /* "cgmath.pyx":85
  *                     else:
  *                         dx[k] -= box[k]
  *             rsq = 0.0             # <<<<<<<<<<<<<<
@@ -1870,7 +1872,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
  */
       __pyx_v_rsq = 0.0;
 
-      /* "cgmath.pyx":84
+      /* "cgmath.pyx":86
  *                         dx[k] -= box[k]
  *             rsq = 0.0
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -1880,7 +1882,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
       for (__pyx_t_6 = 0; __pyx_t_6 < 3; __pyx_t_6+=1) {
         __pyx_v_k = __pyx_t_6;
 
-        /* "cgmath.pyx":85
+        /* "cgmath.pyx":87
  *             rsq = 0.0
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]             # <<<<<<<<<<<<<<
@@ -1890,7 +1892,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
         __pyx_v_rsq = (__pyx_v_rsq + ((__pyx_v_dx[__pyx_v_k]) * (__pyx_v_dx[__pyx_v_k])));
       }
 
-      /* "cgmath.pyx":86
+      /* "cgmath.pyx":88
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)             # <<<<<<<<<<<<<<
@@ -1900,7 +1902,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
       __pyx_t_15 = __pyx_v_pos;
       *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_results.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_results.diminfo[0].strides) = sqrt(__pyx_v_rsq);
 
-      /* "cgmath.pyx":87
+      /* "cgmath.pyx":89
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)
  *             pos += 1             # <<<<<<<<<<<<<<
@@ -1911,7 +1913,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
     }
   }
 
-  /* "cgmath.pyx":59
+  /* "cgmath.pyx":61
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -1944,7 +1946,7 @@ static PyObject *__pyx_pf_6cgmath_2inter_distance_array_withpbc(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "cgmath.pyx":91
+/* "cgmath.pyx":93
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -1984,11 +1986,11 @@ static PyObject *__pyx_pw_6cgmath_5intra_distance_array_nopbc(PyObject *__pyx_se
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_results)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("intra_distance_array_nopbc", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("intra_distance_array_nopbc", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intra_distance_array_nopbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intra_distance_array_nopbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2001,14 +2003,14 @@ static PyObject *__pyx_pw_6cgmath_5intra_distance_array_nopbc(PyObject *__pyx_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("intra_distance_array_nopbc", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("intra_distance_array_nopbc", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("cgmath.intra_distance_array_nopbc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 92; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_6cgmath_4intra_distance_array_nopbc(__pyx_self, __pyx_v_coords1, __pyx_v_results);
 
   /* function exit code */
@@ -2058,16 +2060,16 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
   __pyx_pybuffernd_results.rcbuffer = &__pyx_pybuffer_results;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_coords1.diminfo[0].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords1.diminfo[0].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords1.diminfo[1].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords1.diminfo[1].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_results.diminfo[0].strides = __pyx_pybuffernd_results.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_results.diminfo[0].shape = __pyx_pybuffernd_results.rcbuffer->pybuffer.shape[0];
 
-  /* "cgmath.pyx":96
+  /* "cgmath.pyx":98
  *     cdef DTYPE_t rsq, dx[3], rij[3]
  * 
  *     pos = 0             # <<<<<<<<<<<<<<
@@ -2076,7 +2078,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
  */
   __pyx_v_pos = 0;
 
-  /* "cgmath.pyx":98
+  /* "cgmath.pyx":100
  *     pos = 0
  * 
  *     for i in range(coords1.shape[0]):             # <<<<<<<<<<<<<<
@@ -2087,7 +2089,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "cgmath.pyx":99
+    /* "cgmath.pyx":101
  * 
  *     for i in range(coords1.shape[0]):
  *         for k in range(3):             # <<<<<<<<<<<<<<
@@ -2097,7 +2099,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
     for (__pyx_t_3 = 0; __pyx_t_3 < 3; __pyx_t_3+=1) {
       __pyx_v_k = __pyx_t_3;
 
-      /* "cgmath.pyx":100
+      /* "cgmath.pyx":102
  *     for i in range(coords1.shape[0]):
  *         for k in range(3):
  *             rij[k] = coords1[i, k]             # <<<<<<<<<<<<<<
@@ -2109,7 +2111,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
       (__pyx_v_rij[__pyx_v_k]) = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords1.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_coords1.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_coords1.diminfo[1].strides));
     }
 
-    /* "cgmath.pyx":102
+    /* "cgmath.pyx":104
  *             rij[k] = coords1[i, k]
  * 
  *         for j in range(i + 1, coords1.shape[0]):             # <<<<<<<<<<<<<<
@@ -2120,7 +2122,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
     for (__pyx_t_3 = (__pyx_v_i + 1); __pyx_t_3 < __pyx_t_6; __pyx_t_3+=1) {
       __pyx_v_j = __pyx_t_3;
 
-      /* "cgmath.pyx":103
+      /* "cgmath.pyx":105
  * 
  *         for j in range(i + 1, coords1.shape[0]):
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -2130,7 +2132,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
       for (__pyx_t_7 = 0; __pyx_t_7 < 3; __pyx_t_7+=1) {
         __pyx_v_k = __pyx_t_7;
 
-        /* "cgmath.pyx":104
+        /* "cgmath.pyx":106
  *         for j in range(i + 1, coords1.shape[0]):
  *             for k in range(3):
  *                 dx[k] = rij[k] - coords1[j, k]             # <<<<<<<<<<<<<<
@@ -2142,7 +2144,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
         (__pyx_v_dx[__pyx_v_k]) = ((__pyx_v_rij[__pyx_v_k]) - (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords1.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_coords1.diminfo[0].strides, __pyx_t_9, __pyx_pybuffernd_coords1.diminfo[1].strides)));
       }
 
-      /* "cgmath.pyx":105
+      /* "cgmath.pyx":107
  *             for k in range(3):
  *                 dx[k] = rij[k] - coords1[j, k]
  *             rsq = 0.0             # <<<<<<<<<<<<<<
@@ -2151,7 +2153,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
  */
       __pyx_v_rsq = 0.0;
 
-      /* "cgmath.pyx":106
+      /* "cgmath.pyx":108
  *                 dx[k] = rij[k] - coords1[j, k]
  *             rsq = 0.0
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -2161,7 +2163,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
       for (__pyx_t_7 = 0; __pyx_t_7 < 3; __pyx_t_7+=1) {
         __pyx_v_k = __pyx_t_7;
 
-        /* "cgmath.pyx":107
+        /* "cgmath.pyx":109
  *             rsq = 0.0
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]             # <<<<<<<<<<<<<<
@@ -2171,7 +2173,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
         __pyx_v_rsq = (__pyx_v_rsq + ((__pyx_v_dx[__pyx_v_k]) * (__pyx_v_dx[__pyx_v_k])));
       }
 
-      /* "cgmath.pyx":108
+      /* "cgmath.pyx":110
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)             # <<<<<<<<<<<<<<
@@ -2181,7 +2183,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
       __pyx_t_10 = __pyx_v_pos;
       *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_results.rcbuffer->pybuffer.buf, __pyx_t_10, __pyx_pybuffernd_results.diminfo[0].strides) = sqrt(__pyx_v_rsq);
 
-      /* "cgmath.pyx":109
+      /* "cgmath.pyx":111
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)
  *             pos += 1             # <<<<<<<<<<<<<<
@@ -2192,7 +2194,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
     }
   }
 
-  /* "cgmath.pyx":91
+  /* "cgmath.pyx":93
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -2221,7 +2223,7 @@ static PyObject *__pyx_pf_6cgmath_4intra_distance_array_nopbc(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "cgmath.pyx":114
+/* "cgmath.pyx":116
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -2263,16 +2265,16 @@ static PyObject *__pyx_pw_6cgmath_7intra_distance_array_withpbc(PyObject *__pyx_
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_box)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("intra_distance_array_withpbc", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("intra_distance_array_withpbc", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_results)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("intra_distance_array_withpbc", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("intra_distance_array_withpbc", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intra_distance_array_withpbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intra_distance_array_withpbc") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2287,15 +2289,15 @@ static PyObject *__pyx_pw_6cgmath_7intra_distance_array_withpbc(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("intra_distance_array_withpbc", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("intra_distance_array_withpbc", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("cgmath.intra_distance_array_withpbc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_box), __pyx_ptype_5numpy_ndarray, 1, "box", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coords1), __pyx_ptype_5numpy_ndarray, 1, "coords1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_box), __pyx_ptype_5numpy_ndarray, 1, "box", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_results), __pyx_ptype_5numpy_ndarray, 1, "results", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_6cgmath_6intra_distance_array_withpbc(__pyx_self, __pyx_v_coords1, __pyx_v_box, __pyx_v_results);
 
   /* function exit code */
@@ -2356,21 +2358,21 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
   __pyx_pybuffernd_results.rcbuffer = &__pyx_pybuffer_results;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coords1.rcbuffer->pybuffer, (PyObject*)__pyx_v_coords1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_coords1.diminfo[0].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coords1.diminfo[0].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_coords1.diminfo[1].strides = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_coords1.diminfo[1].shape = __pyx_pybuffernd_coords1.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_box.rcbuffer->pybuffer, (PyObject*)__pyx_v_box, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_box.rcbuffer->pybuffer, (PyObject*)__pyx_v_box, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_box.diminfo[0].strides = __pyx_pybuffernd_box.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_box.diminfo[0].shape = __pyx_pybuffernd_box.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_results.rcbuffer->pybuffer, (PyObject*)__pyx_v_results, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_results.diminfo[0].strides = __pyx_pybuffernd_results.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_results.diminfo[0].shape = __pyx_pybuffernd_results.rcbuffer->pybuffer.shape[0];
 
-  /* "cgmath.pyx":120
+  /* "cgmath.pyx":122
  *     cdef DTYPE_t rsq, dx[3], bhalf[3]
  * 
  *     for k in range(3):             # <<<<<<<<<<<<<<
@@ -2380,7 +2382,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
   for (__pyx_t_1 = 0; __pyx_t_1 < 3; __pyx_t_1+=1) {
     __pyx_v_k = __pyx_t_1;
 
-    /* "cgmath.pyx":121
+    /* "cgmath.pyx":123
  * 
  *     for k in range(3):
  *         bhalf[k] = box[k] / 2.0             # <<<<<<<<<<<<<<
@@ -2391,7 +2393,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
     (__pyx_v_bhalf[__pyx_v_k]) = ((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_box.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_box.diminfo[0].strides)) / 2.0);
   }
 
-  /* "cgmath.pyx":123
+  /* "cgmath.pyx":125
  *         bhalf[k] = box[k] / 2.0
  * 
  *     pos = 0             # <<<<<<<<<<<<<<
@@ -2400,7 +2402,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
  */
   __pyx_v_pos = 0;
 
-  /* "cgmath.pyx":125
+  /* "cgmath.pyx":127
  *     pos = 0
  * 
  *     for i in range(coords1.shape[0]):             # <<<<<<<<<<<<<<
@@ -2411,7 +2413,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
   for (__pyx_t_1 = 0; __pyx_t_1 < __pyx_t_3; __pyx_t_1+=1) {
     __pyx_v_i = __pyx_t_1;
 
-    /* "cgmath.pyx":126
+    /* "cgmath.pyx":128
  * 
  *     for i in range(coords1.shape[0]):
  *         for j in range(i + 1, coords1.shape[0]):             # <<<<<<<<<<<<<<
@@ -2422,7 +2424,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
     for (__pyx_t_5 = (__pyx_v_i + 1); __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_j = __pyx_t_5;
 
-      /* "cgmath.pyx":127
+      /* "cgmath.pyx":129
  *     for i in range(coords1.shape[0]):
  *         for j in range(i + 1, coords1.shape[0]):
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -2432,7 +2434,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
       for (__pyx_t_6 = 0; __pyx_t_6 < 3; __pyx_t_6+=1) {
         __pyx_v_k = __pyx_t_6;
 
-        /* "cgmath.pyx":128
+        /* "cgmath.pyx":130
  *         for j in range(i + 1, coords1.shape[0]):
  *             for k in range(3):
  *                 dx[k] = coords1[i, k] - coords1[j, k]             # <<<<<<<<<<<<<<
@@ -2446,29 +2448,29 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
         (__pyx_v_dx[__pyx_v_k]) = ((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords1.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_coords1.diminfo[0].strides, __pyx_t_8, __pyx_pybuffernd_coords1.diminfo[1].strides)) - (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_coords1.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_coords1.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_coords1.diminfo[1].strides)));
       }
 
-      /* "cgmath.pyx":130
+      /* "cgmath.pyx":132
  *                 dx[k] = coords1[i, k] - coords1[j, k]
  *             # Periodic boundaries
  *             for k in range(3):             # <<<<<<<<<<<<<<
- *                 if abs(dx[k]) > bhalf[k]:
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:
  */
       for (__pyx_t_6 = 0; __pyx_t_6 < 3; __pyx_t_6+=1) {
         __pyx_v_k = __pyx_t_6;
 
-        /* "cgmath.pyx":131
+        /* "cgmath.pyx":133
  *             # Periodic boundaries
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
+ *                 if fabs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
  *                     if dx[k] < 0:
  *                         dx[k] += box[k]
  */
-        __pyx_t_11 = ((fabsf((__pyx_v_dx[__pyx_v_k])) > (__pyx_v_bhalf[__pyx_v_k])) != 0);
+        __pyx_t_11 = ((fabs((__pyx_v_dx[__pyx_v_k])) > (__pyx_v_bhalf[__pyx_v_k])) != 0);
         if (__pyx_t_11) {
 
-          /* "cgmath.pyx":132
+          /* "cgmath.pyx":134
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:             # <<<<<<<<<<<<<<
  *                         dx[k] += box[k]
  *                     else:
@@ -2476,8 +2478,8 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
           __pyx_t_11 = (((__pyx_v_dx[__pyx_v_k]) < 0.0) != 0);
           if (__pyx_t_11) {
 
-            /* "cgmath.pyx":133
- *                 if abs(dx[k]) > bhalf[k]:
+            /* "cgmath.pyx":135
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:
  *                         dx[k] += box[k]             # <<<<<<<<<<<<<<
  *                     else:
@@ -2487,9 +2489,9 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
             __pyx_t_13 = __pyx_v_k;
             (__pyx_v_dx[__pyx_t_12]) = ((__pyx_v_dx[__pyx_t_12]) + (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_box.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_box.diminfo[0].strides)));
 
-            /* "cgmath.pyx":132
+            /* "cgmath.pyx":134
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:
+ *                 if fabs(dx[k]) > bhalf[k]:
  *                     if dx[k] < 0:             # <<<<<<<<<<<<<<
  *                         dx[k] += box[k]
  *                     else:
@@ -2497,7 +2499,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
             goto __pyx_L14;
           }
 
-          /* "cgmath.pyx":135
+          /* "cgmath.pyx":137
  *                         dx[k] += box[k]
  *                     else:
  *                         dx[k] -= box[k]             # <<<<<<<<<<<<<<
@@ -2511,17 +2513,17 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
           }
           __pyx_L14:;
 
-          /* "cgmath.pyx":131
+          /* "cgmath.pyx":133
  *             # Periodic boundaries
  *             for k in range(3):
- *                 if abs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
+ *                 if fabs(dx[k]) > bhalf[k]:             # <<<<<<<<<<<<<<
  *                     if dx[k] < 0:
  *                         dx[k] += box[k]
  */
         }
       }
 
-      /* "cgmath.pyx":136
+      /* "cgmath.pyx":138
  *                     else:
  *                         dx[k] -= box[k]
  *             rsq = 0.0             # <<<<<<<<<<<<<<
@@ -2530,7 +2532,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
  */
       __pyx_v_rsq = 0.0;
 
-      /* "cgmath.pyx":137
+      /* "cgmath.pyx":139
  *                         dx[k] -= box[k]
  *             rsq = 0.0
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -2540,7 +2542,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
       for (__pyx_t_6 = 0; __pyx_t_6 < 3; __pyx_t_6+=1) {
         __pyx_v_k = __pyx_t_6;
 
-        /* "cgmath.pyx":138
+        /* "cgmath.pyx":140
  *             rsq = 0.0
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]             # <<<<<<<<<<<<<<
@@ -2550,7 +2552,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
         __pyx_v_rsq = (__pyx_v_rsq + ((__pyx_v_dx[__pyx_v_k]) * (__pyx_v_dx[__pyx_v_k])));
       }
 
-      /* "cgmath.pyx":139
+      /* "cgmath.pyx":141
  *             for k in range(3):
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)             # <<<<<<<<<<<<<<
@@ -2560,7 +2562,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
       __pyx_t_15 = __pyx_v_pos;
       *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float32_t *, __pyx_pybuffernd_results.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_results.diminfo[0].strides) = sqrt(__pyx_v_rsq);
 
-      /* "cgmath.pyx":140
+      /* "cgmath.pyx":142
  *                 rsq += dx[k] * dx[k]
  *             results[pos] = sqrt(rsq)
  *             pos += 1             # <<<<<<<<<<<<<<
@@ -2571,7 +2573,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
     }
   }
 
-  /* "cgmath.pyx":114
+  /* "cgmath.pyx":116
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
@@ -2602,7 +2604,7 @@ static PyObject *__pyx_pf_6cgmath_6intra_distance_array_withpbc(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "cgmath.pyx":145
+/* "cgmath.pyx":147
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
@@ -2644,16 +2646,16 @@ static PyObject *__pyx_pw_6cgmath_9inter_index_array(PyObject *__pyx_self, PyObj
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_idx2)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("inter_index_array", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("inter_index_array", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_out)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("inter_index_array", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("inter_index_array", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "inter_index_array") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "inter_index_array") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2668,15 +2670,15 @@ static PyObject *__pyx_pw_6cgmath_9inter_index_array(PyObject *__pyx_self, PyObj
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("inter_index_array", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("inter_index_array", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("cgmath.inter_index_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_idx1), __pyx_ptype_5numpy_ndarray, 1, "idx1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_idx2), __pyx_ptype_5numpy_ndarray, 1, "idx2", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_out), __pyx_ptype_5numpy_ndarray, 1, "out", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_idx1), __pyx_ptype_5numpy_ndarray, 1, "idx1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_idx2), __pyx_ptype_5numpy_ndarray, 1, "idx2", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_out), __pyx_ptype_5numpy_ndarray, 1, "out", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_6cgmath_8inter_index_array(__pyx_self, __pyx_v_idx1, __pyx_v_idx2, __pyx_v_out);
 
   /* function exit code */
@@ -2728,21 +2730,21 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
   __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_idx1.rcbuffer->pybuffer, (PyObject*)__pyx_v_idx1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_idx1.rcbuffer->pybuffer, (PyObject*)__pyx_v_idx1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_idx1.diminfo[0].strides = __pyx_pybuffernd_idx1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_idx1.diminfo[0].shape = __pyx_pybuffernd_idx1.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_idx2.rcbuffer->pybuffer, (PyObject*)__pyx_v_idx2, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_idx2.rcbuffer->pybuffer, (PyObject*)__pyx_v_idx2, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_idx2.diminfo[0].strides = __pyx_pybuffernd_idx2.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_idx2.diminfo[0].shape = __pyx_pybuffernd_idx2.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)__pyx_v_out, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)__pyx_v_out, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
 
-  /* "cgmath.pyx":150
+  /* "cgmath.pyx":152
  *     cdef Py_ssize_t i, j, pos
  * 
  *     pos = 0             # <<<<<<<<<<<<<<
@@ -2751,7 +2753,7 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
  */
   __pyx_v_pos = 0;
 
-  /* "cgmath.pyx":152
+  /* "cgmath.pyx":154
  *     pos = 0
  * 
  *     for i in range(idx1.shape[0]):             # <<<<<<<<<<<<<<
@@ -2762,7 +2764,7 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "cgmath.pyx":153
+    /* "cgmath.pyx":155
  * 
  *     for i in range(idx1.shape[0]):
  *         for j in range(idx2.shape[0]):             # <<<<<<<<<<<<<<
@@ -2773,7 +2775,7 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_j = __pyx_t_4;
 
-      /* "cgmath.pyx":154
+      /* "cgmath.pyx":156
  *     for i in range(idx1.shape[0]):
  *         for j in range(idx2.shape[0]):
  *             out[pos, 0] = idx1[i]             # <<<<<<<<<<<<<<
@@ -2785,7 +2787,7 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
       __pyx_t_7 = 0;
       *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_out.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_out.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_out.diminfo[1].strides) = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_idx1.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_idx1.diminfo[0].strides));
 
-      /* "cgmath.pyx":155
+      /* "cgmath.pyx":157
  *         for j in range(idx2.shape[0]):
  *             out[pos, 0] = idx1[i]
  *             out[pos, 1] = idx2[j]             # <<<<<<<<<<<<<<
@@ -2797,7 +2799,7 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
       __pyx_t_10 = 1;
       *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_out.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_out.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_out.diminfo[1].strides) = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_idx2.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_idx2.diminfo[0].strides));
 
-      /* "cgmath.pyx":156
+      /* "cgmath.pyx":158
  *             out[pos, 0] = idx1[i]
  *             out[pos, 1] = idx2[j]
  *             pos += 1             # <<<<<<<<<<<<<<
@@ -2808,7 +2810,7 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
     }
   }
 
-  /* "cgmath.pyx":145
+  /* "cgmath.pyx":147
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
@@ -2839,7 +2841,7 @@ static PyObject *__pyx_pf_6cgmath_8inter_index_array(CYTHON_UNUSED PyObject *__p
   return __pyx_r;
 }
 
-/* "cgmath.pyx":160
+/* "cgmath.pyx":162
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
@@ -2879,11 +2881,11 @@ static PyObject *__pyx_pw_6cgmath_11intra_index_array(PyObject *__pyx_self, PyOb
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_out)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("intra_index_array", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("intra_index_array", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intra_index_array") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intra_index_array") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2896,14 +2898,14 @@ static PyObject *__pyx_pw_6cgmath_11intra_index_array(PyObject *__pyx_self, PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("intra_index_array", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("intra_index_array", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("cgmath.intra_index_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_idx1), __pyx_ptype_5numpy_ndarray, 1, "idx1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_out), __pyx_ptype_5numpy_ndarray, 1, "out", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 161; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_idx1), __pyx_ptype_5numpy_ndarray, 1, "idx1", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_out), __pyx_ptype_5numpy_ndarray, 1, "out", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_6cgmath_10intra_index_array(__pyx_self, __pyx_v_idx1, __pyx_v_out);
 
   /* function exit code */
@@ -2949,16 +2951,16 @@ static PyObject *__pyx_pf_6cgmath_10intra_index_array(CYTHON_UNUSED PyObject *__
   __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_idx1.rcbuffer->pybuffer, (PyObject*)__pyx_v_idx1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_idx1.rcbuffer->pybuffer, (PyObject*)__pyx_v_idx1, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_idx1.diminfo[0].strides = __pyx_pybuffernd_idx1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_idx1.diminfo[0].shape = __pyx_pybuffernd_idx1.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)__pyx_v_out, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)__pyx_v_out, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int64_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
 
-  /* "cgmath.pyx":164
+  /* "cgmath.pyx":166
  *     cdef Py_ssize_t i, j, pos
  * 
  *     pos = 0             # <<<<<<<<<<<<<<
@@ -2967,7 +2969,7 @@ static PyObject *__pyx_pf_6cgmath_10intra_index_array(CYTHON_UNUSED PyObject *__
  */
   __pyx_v_pos = 0;
 
-  /* "cgmath.pyx":166
+  /* "cgmath.pyx":168
  *     pos = 0
  * 
  *     for i in range(idx1.shape[0]):             # <<<<<<<<<<<<<<
@@ -2978,7 +2980,7 @@ static PyObject *__pyx_pf_6cgmath_10intra_index_array(CYTHON_UNUSED PyObject *__
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "cgmath.pyx":167
+    /* "cgmath.pyx":169
  * 
  *     for i in range(idx1.shape[0]):
  *         for j in range(i + 1, idx1.shape[0]):             # <<<<<<<<<<<<<<
@@ -2989,7 +2991,7 @@ static PyObject *__pyx_pf_6cgmath_10intra_index_array(CYTHON_UNUSED PyObject *__
     for (__pyx_t_4 = (__pyx_v_i + 1); __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_j = __pyx_t_4;
 
-      /* "cgmath.pyx":168
+      /* "cgmath.pyx":170
  *     for i in range(idx1.shape[0]):
  *         for j in range(i + 1, idx1.shape[0]):
  *             out[pos, 0] = idx1[i]             # <<<<<<<<<<<<<<
@@ -3001,7 +3003,7 @@ static PyObject *__pyx_pf_6cgmath_10intra_index_array(CYTHON_UNUSED PyObject *__
       __pyx_t_7 = 0;
       *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_out.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_out.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_out.diminfo[1].strides) = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_idx1.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_idx1.diminfo[0].strides));
 
-      /* "cgmath.pyx":169
+      /* "cgmath.pyx":171
  *         for j in range(i + 1, idx1.shape[0]):
  *             out[pos, 0] = idx1[i]
  *             out[pos, 1] = idx1[j]             # <<<<<<<<<<<<<<
@@ -3012,7 +3014,7 @@ static PyObject *__pyx_pf_6cgmath_10intra_index_array(CYTHON_UNUSED PyObject *__
       __pyx_t_10 = 1;
       *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_out.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_out.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_out.diminfo[1].strides) = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int64_t *, __pyx_pybuffernd_idx1.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_idx1.diminfo[0].strides));
 
-      /* "cgmath.pyx":170
+      /* "cgmath.pyx":172
  *             out[pos, 0] = idx1[i]
  *             out[pos, 1] = idx1[j]
  *             pos += 1             # <<<<<<<<<<<<<<
@@ -3021,7 +3023,7 @@ static PyObject *__pyx_pf_6cgmath_10intra_index_array(CYTHON_UNUSED PyObject *__
     }
   }
 
-  /* "cgmath.pyx":160
+  /* "cgmath.pyx":162
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
@@ -5258,7 +5260,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 799; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
@@ -5336,77 +5338,77 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "cgmath.pyx":36
+  /* "cgmath.pyx":38
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                np.ndarray[np.float32_t, ndim=2] coords2,
  *                                np.ndarray[np.float32_t, ndim=1] results):
  */
-  __pyx_tuple__7 = PyTuple_Pack(10, __pyx_n_s_coords1, __pyx_n_s_coords2, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_rij); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__7 = PyTuple_Pack(10, __pyx_n_s_coords1, __pyx_n_s_coords2, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_rij); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_inter_distance_array_nopbc, 36, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_inter_distance_array_nopbc, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "cgmath.pyx":59
+  /* "cgmath.pyx":61
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                  np.ndarray[np.float32_t, ndim=2] coords2,
  *                                  np.ndarray[np.float32_t, ndim=1] box,
  */
-  __pyx_tuple__9 = PyTuple_Pack(11, __pyx_n_s_coords1, __pyx_n_s_coords2, __pyx_n_s_box, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_bhalf); if (unlikely(!__pyx_tuple__9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__9 = PyTuple_Pack(11, __pyx_n_s_coords1, __pyx_n_s_coords2, __pyx_n_s_box, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_bhalf); if (unlikely(!__pyx_tuple__9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(4, 0, 11, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_inter_distance_array_withpbc, 59, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(4, 0, 11, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_inter_distance_array_withpbc, 61, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "cgmath.pyx":91
+  /* "cgmath.pyx":93
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                np.ndarray[np.float32_t, ndim=1] results):
  *     cdef Py_ssize_t i, j, k, pos
  */
-  __pyx_tuple__11 = PyTuple_Pack(9, __pyx_n_s_coords1, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_rij); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__11 = PyTuple_Pack(9, __pyx_n_s_coords1, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_rij); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 9, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_intra_distance_array_nopbc, 91, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 9, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_intra_distance_array_nopbc, 93, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "cgmath.pyx":114
+  /* "cgmath.pyx":116
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                  np.ndarray[np.float32_t, ndim=1] box,
  *                                  np.ndarray[np.float32_t, ndim=1] results):
  */
-  __pyx_tuple__13 = PyTuple_Pack(10, __pyx_n_s_coords1, __pyx_n_s_box, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_bhalf); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__13 = PyTuple_Pack(10, __pyx_n_s_coords1, __pyx_n_s_box, __pyx_n_s_results, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_pos, __pyx_n_s_rsq, __pyx_n_s_dx, __pyx_n_s_bhalf); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_intra_distance_array_withpbc, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_intra_distance_array_withpbc, 116, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "cgmath.pyx":145
+  /* "cgmath.pyx":147
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
  *                       np.ndarray[np.int64_t, ndim=1] idx2,
  *                       np.ndarray[np.int64_t, ndim=2] out):
  */
-  __pyx_tuple__15 = PyTuple_Pack(6, __pyx_n_s_idx1, __pyx_n_s_idx2, __pyx_n_s_out, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_pos); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__15 = PyTuple_Pack(6, __pyx_n_s_idx1, __pyx_n_s_idx2, __pyx_n_s_out, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_pos); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_inter_index_array, 145, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_inter_index_array, 147, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "cgmath.pyx":160
+  /* "cgmath.pyx":162
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
  *                       np.ndarray[np.int64_t, ndim=2] out):
  *     cdef Py_ssize_t i, j, pos
  */
-  __pyx_tuple__17 = PyTuple_Pack(5, __pyx_n_s_idx1, __pyx_n_s_out, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_pos); if (unlikely(!__pyx_tuple__17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__17 = PyTuple_Pack(5, __pyx_n_s_idx1, __pyx_n_s_out, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_pos); if (unlikely(!__pyx_tuple__17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_intra_index_array, 160, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_richard_code_cellgrid_cell, __pyx_n_s_intra_index_array, 162, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5540,91 +5542,91 @@ PyMODINIT_FUNC PyInit_cgmath(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cgmath.pyx":31
- *     float sqrt(double x)
+  /* "cgmath.pyx":33
+ * )
  * 
  * DTYPE = np.float32             # <<<<<<<<<<<<<<
  * ctypedef np.float32_t DTYPE_t
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float32); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float32); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cgmath.pyx":36
+  /* "cgmath.pyx":38
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                np.ndarray[np.float32_t, ndim=2] coords2,
  *                                np.ndarray[np.float32_t, ndim=1] results):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_1inter_distance_array_nopbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_1inter_distance_array_nopbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_inter_distance_array_nopbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_inter_distance_array_nopbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cgmath.pyx":59
+  /* "cgmath.pyx":61
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                  np.ndarray[np.float32_t, ndim=2] coords2,
  *                                  np.ndarray[np.float32_t, ndim=1] box,
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_3inter_distance_array_withpbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_3inter_distance_array_withpbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_inter_distance_array_withpbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_inter_distance_array_withpbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cgmath.pyx":91
+  /* "cgmath.pyx":93
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                np.ndarray[np.float32_t, ndim=1] results):
  *     cdef Py_ssize_t i, j, k, pos
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_5intra_distance_array_nopbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_5intra_distance_array_nopbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_intra_distance_array_nopbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_intra_distance_array_nopbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cgmath.pyx":114
+  /* "cgmath.pyx":116
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,             # <<<<<<<<<<<<<<
  *                                  np.ndarray[np.float32_t, ndim=1] box,
  *                                  np.ndarray[np.float32_t, ndim=1] results):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_7intra_distance_array_withpbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_7intra_distance_array_withpbc, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_intra_distance_array_withpbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_intra_distance_array_withpbc, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cgmath.pyx":145
+  /* "cgmath.pyx":147
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def inter_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
  *                       np.ndarray[np.int64_t, ndim=1] idx2,
  *                       np.ndarray[np.int64_t, ndim=2] out):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_9inter_index_array, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_9inter_index_array, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_inter_index_array, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_inter_index_array, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cgmath.pyx":160
+  /* "cgmath.pyx":162
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def intra_index_array(np.ndarray[np.int64_t, ndim=1] idx1,             # <<<<<<<<<<<<<<
  *                       np.ndarray[np.int64_t, ndim=2] out):
  *     cdef Py_ssize_t i, j, pos
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_11intra_index_array, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6cgmath_11intra_index_array, NULL, __pyx_n_s_cgmath); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_intra_index_array, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_intra_index_array, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "cgmath.pyx":1

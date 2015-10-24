@@ -45,6 +45,26 @@ def _index_to_address(cid, ncells):
     return cid, y, z
 
 
+cdef int _address_to_int_pbc(
+    long[:] addr,
+    long[:] ncells):
+    cdef int i, ret
+
+    # Periodic boundaries in address
+    for i in range(3):
+        if addr[i] < 0:
+            addr[i] += ncells[i]
+        elif addr[i] >= ncells[i]:
+            addr[i] -= ncells[i]
+
+    ret = addr[0]
+    ret += addr[1] * ncells[0]
+    ret += addr[2] * ncells[0] * ncells[1]
+
+    return ret
+
+
+
 def _create_views(ncells, indices, coords, original):
     """Create a list relating a cell index to a view of the coords
 
@@ -209,9 +229,7 @@ class CellGrid(object):
             item = np.array(item)
         # and convert ndarrays to an integer
         if isinstance(item, np.ndarray):  # if address
-            if self.periodic:
-                item = self._address_pbc(item)
-            item = self._address_to_index(item)
+            item = _address_to_int_pbc(item, self._ncells)
 
         try:
             coords, idx = self._views[item]

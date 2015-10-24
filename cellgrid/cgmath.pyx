@@ -25,8 +25,10 @@ import numpy as np
 cimport cython
 cimport numpy as np
 
-cdef extern from "math.h":
-    float sqrt(double x)
+from libc.math cimport (
+    sqrt,
+    fabs,
+)
 
 DTYPE = np.float32
 ctypedef np.float32_t DTYPE_t
@@ -75,7 +77,7 @@ def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
                 dx[k] = coords1[i, k] - coords2[j, k]
             # Periodic boundaries
             for k in range(3):
-                if abs(dx[k]) > bhalf[k]:
+                if fabs(dx[k]) > bhalf[k]:
                     if dx[k] < 0:
                         dx[k] += box[k]
                     else:
@@ -128,7 +130,7 @@ def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
                 dx[k] = coords1[i, k] - coords1[j, k]
             # Periodic boundaries
             for k in range(3):
-                if abs(dx[k]) > bhalf[k]:
+                if fabs(dx[k]) > bhalf[k]:
                     if dx[k] < 0:
                         dx[k] += box[k]
                     else:
