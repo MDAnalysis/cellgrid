@@ -312,13 +312,13 @@ class Cell(object):
     def half_neighbours(self):
         """Generator to iterate over the address of my 13 neighbours"""
         me = self.address
-        return (me + other for other in self._half_route)
+        return me + self._half_route
 
     @property
     def all_neighbours(self):
         """Generator to iterate over the address of my 26 neighbours"""
         me = self.address
-        return (me + other for other in self._full_route)
+        return me + self._full_route
 
     def __repr__(self):
         return ("<Cell at {addr} with {num} coords>"
