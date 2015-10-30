@@ -8,6 +8,17 @@ Cellgrid offers scalable functions for calculating pairwise distances between ar
 For many cases the distances only up to a given value are of interest, meaning that the volume can be decomposed into smaller subvolumes to reduce the number of pairs that need to be calculated.
 CellGrid was designed with molecular dynamics results in mind, and offers support for periodic boundary conditions.
 
+Install me like this:
+---------------------
+``` bash
+git clone git@github.com:richardjgowers/cellgrid.git
+cd cellgrid
+python setup.py install --user
+```
+
+How to use me
+-------------
+
 ``` python
 >>> import numpy as np
 >>> from cellgrid import capped_distance_array
