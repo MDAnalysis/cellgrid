@@ -11,7 +11,7 @@ CellGrid was designed with molecular dynamics results in mind, and offers suppor
 Install me like this:
 ---------------------
 ``` bash
-git clone git@github.com:richardjgowers/cellgrid.git
+git clone git@github.com:MDAnalysis/cellgrid.git
 cd cellgrid
 python setup.py install --user
 ```
