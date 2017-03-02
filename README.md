@@ -1,8 +1,8 @@
 CellGrid
 ========
 
-[![Build Status](https://img.shields.io/travis/richardjgowers/cellgrid.svg)](https://travis-ci.org/richardjgowers/cellgrid)
-[![Coverage](https://img.shields.io/coveralls/richardjgowers/cellgrid.svg)](https://coveralls.io/r/richardjgowers/cellgrid?branch=master)
+[![Build Status](https://img.shields.io/travis/MDAnalysis/cellgrid.svg)](https://travis-ci.org/MDAnalysis/cellgrid)
+[![Coverage](https://img.shields.io/coveralls/MDAnalysis/cellgrid.svg)](https://coveralls.io/r/MDAnalysis/cellgrid?branch=master)
 
 Cellgrid offers scalable functions for calculating pairwise distances between arrays of 3d coordinates.
 For many cases the distances only up to a given value are of interest, meaning that the volume can be decomposed into smaller subvolumes to reduce the number of pairs that need to be calculated.
