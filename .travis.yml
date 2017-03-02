@@ -23,7 +23,8 @@ before_install:
   - conda update --yes conda
 # Install packages
 install:
-  - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy nose cython
+  - conda create --yes -n pyenv python=$TRAVIS_PYTHON_VERSION numpy nose cython
+  - source activate pyenv
   - pip install coveralls
   - python setup.py develop
  
