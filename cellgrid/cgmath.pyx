@@ -24,6 +24,7 @@ Given a single array, do all unique pairwise comparisons 1/2n*(n-1)
 import numpy as np
 cimport cython
 cimport numpy as np
+from cython cimport floating
 
 from libc.math cimport (
     sqrt,
@@ -31,13 +32,13 @@ from libc.math cimport (
 )
 
 DTYPE = np.float32
-ctypedef np.float32_t DTYPE_t
+ctypedef floating DTYPE_t
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def inter_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,
-                               np.ndarray[np.float32_t, ndim=2] coords2,
-                               np.ndarray[np.float32_t, ndim=1] results):
+def inter_distance_array_nopbc(np.ndarray[floating, ndim=2] coords1,
+                               np.ndarray[floating, ndim=2] coords2,
+                               np.ndarray[floating, ndim=1] results):
     cdef Py_ssize_t i, j, k, pos
     cdef DTYPE_t rsq, dx[3], rij[3]
 
@@ -58,10 +59,10 @@ def inter_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
-                                 np.ndarray[np.float32_t, ndim=2] coords2,
-                                 np.ndarray[np.float32_t, ndim=1] box,
-                                 np.ndarray[np.float32_t, ndim=1] results):
+def inter_distance_array_withpbc(np.ndarray[floating, ndim=2] coords1,
+                                 np.ndarray[floating, ndim=2] coords2,
+                                 np.ndarray[floating, ndim=1] box,
+                                 np.ndarray[floating, ndim=1] results):
 
     cdef Py_ssize_t i, j, k, pos
     cdef DTYPE_t rsq, dx[3], bhalf[3]
@@ -90,8 +91,8 @@ def inter_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def intra_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,
-                               np.ndarray[np.float32_t, ndim=1] results):
+def intra_distance_array_nopbc(np.ndarray[floating, ndim=2] coords1,
+                               np.ndarray[floating, ndim=1] results):
     cdef Py_ssize_t i, j, k, pos
     cdef DTYPE_t rsq, dx[3], rij[3]
 
@@ -113,9 +114,9 @@ def intra_distance_array_nopbc(np.ndarray[np.float32_t, ndim=2] coords1,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def intra_distance_array_withpbc(np.ndarray[np.float32_t, ndim=2] coords1,
-                                 np.ndarray[np.float32_t, ndim=1] box,
-                                 np.ndarray[np.float32_t, ndim=1] results):
+def intra_distance_array_withpbc(np.ndarray[floating, ndim=2] coords1,
+                                 np.ndarray[floating, ndim=1] box,
+                                 np.ndarray[floating, ndim=1] results):
     cdef Py_ssize_t i, j, k, pos
     cdef DTYPE_t rsq, dx[3], bhalf[3]
 

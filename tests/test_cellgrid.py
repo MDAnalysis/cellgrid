@@ -147,6 +147,7 @@ class TestViewCreator(object):
     # Need fancy test to make sure all content of view dict
     # are views of the original coordinate array
     # ie assert(a is view of b)
+    precs = [np.float32, np.float64]
     def test_create_views(self):
         coords = np.array([0, 1, 1, 3, 4, 4])
         indices = np.array([0, 1, 2, 3, 4, 5])
@@ -162,28 +163,30 @@ class TestViewCreator(object):
         assert len(view[4][0]) == 2
 
     def test_create_cg_views(self):
-        points = np.array([[0.8, 0.8, 0.8],
-                           [0.1, 0.1, 0.1],
-                           [0.9, 0.9, 0.9]], dtype=np.float32)
+        for prec in self.precs:
+            points = np.array([[0.8, 0.8, 0.8],
+                               [0.1, 0.1, 0.1],
+                               [0.9, 0.9, 0.9]], dtype=prec)
 
-        cg = CellGrid(box=np.ones(3), max_dist=0.25, coordinates=points)
+            cg = CellGrid(box=np.ones(3), max_dist=0.25, coordinates=points)
 
-        views = cg._views
-        assert len(views) == cg._total_cells
-        assert all(views[0][0][0] == points[1])
-        assert all(views[26][0] == points[0, 2])
+            views = cg._views
+            assert len(views) == cg._total_cells
+            assert all(views[0][0][0] == points[1])
+            assert all(views[26][0] == points[0, 2])
 
     def test_create_cg_views_2(self):
         # 8 cells
         # 1 coordinate in cell 0 (first)
         # 2 coordinates in cell 7 (last)
-        points = np.array([[0.8, 0.8, 0.8],
-                           [0.1, 0.1, 0.1],
-                           [0.9, 0.9, 0.9]], dtype=np.float32)
+        for prec in self.precs:
+            points = np.array([[0.8, 0.8, 0.8],
+                               [0.1, 0.1, 0.1],
+                               [0.9, 0.9, 0.9]], dtype=prec)
 
-        cg = CellGrid(box=np.ones(3), max_dist=0.50,
-                      coordinates=points)
+            cg = CellGrid(box=np.ones(3), max_dist=0.50,
+                          coordinates=points)
 
-        for cell, exp in zip(cg, [1, 0, 0, 0,
-                                  0, 0, 0, 2]):
-            assert len(cell) == exp
+            for cell, exp in zip(cg, [1, 0, 0, 0,
+                                      0, 0, 0, 2]):
+                assert len(cell) == exp

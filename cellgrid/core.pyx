@@ -173,6 +173,10 @@ class CellGrid(object):
     def coordinates(self):
         return self._coordinates
 
+    @property
+    def datatype(self):
+        return self._coordinates.dtype
+
     @coordinates.setter
     def coordinates(self, new):
         # When setting coordinates, trigger a rebuild of the grid
