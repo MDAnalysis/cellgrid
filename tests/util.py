@@ -1,4 +1,6 @@
 """Useful functions for tests"""
+from __future__ import division
+
 import numpy as np
 
 
@@ -28,7 +30,7 @@ def slow_inter_distance_withpbc(a, b, box):
 
 def slow_intra_distance_nopbc(a):
     n = a.shape[0]
-    ref = np.zeros(n*(n-1)/2)
+    ref = np.zeros(n*(n-1)//2)
 
     pos = 0
     for i in range(n):
@@ -40,7 +42,7 @@ def slow_intra_distance_nopbc(a):
 
 def slow_intra_distance_withpbc(a, box):
     n = a.shape[0]
-    ref = np.zeros(n*(n-1)/2)
+    ref = np.zeros(n*(n-1)//2)
 
     pos = 0
     for i in range(n):
