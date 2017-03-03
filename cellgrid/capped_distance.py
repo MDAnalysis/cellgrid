@@ -51,7 +51,7 @@ def cellgrid_distance_array(cg1, cg2):
 
     # calculate required size of array
     Nreq = _calculate_distance_array_size(cg1, cg2)
-    dist = np.empty(Nreq, dtype=np.float32)
+    dist = np.empty(Nreq, dtype=cg1.datatype)
     indices = np.empty((Nreq, 2), dtype=np.int)
 
     box = cg1.box
@@ -109,7 +109,7 @@ def cellgrid_self_distance_array(cg1):
 
     Nreq = _calculate_self_distance_array_size(cg1)
     indices = np.empty((Nreq, 2), dtype=np.int)
-    dist = np.empty(Nreq, dtype=np.float32)
+    dist = np.empty(Nreq, dtype=cg1.datatype)
 
     pos = 0
     for cell in cg1:

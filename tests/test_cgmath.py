@@ -7,52 +7,60 @@ from cellgrid import cgmath
 import util
 
 class TestInterDistanceNoPBC(object):
+    precs = [np.float32, np.float64]
     def test_1(self):
-        a = np.arange(30).reshape(10, 3).astype(np.float32)
-        b = np.arange(30).reshape(10, 3).astype(np.float32)
-        res = np.zeros(100).astype(np.float32)
+        for prec in self.precs:
+            a = np.arange(30).reshape(10, 3).astype(prec)
+            b = np.arange(30).reshape(10, 3).astype(prec)
+            res = np.zeros(100).astype(prec)
 
-        cgmath.inter_distance_array_nopbc(a, b, res)
-        ref = np.ravel(util.slow_inter_distance_nopbc(a, b))
+            cgmath.inter_distance_array_nopbc(a, b, res)
+            ref = np.ravel(util.slow_inter_distance_nopbc(a, b))
 
-        assert_array_almost_equal(ref, res)
+            assert_array_almost_equal(ref, res)
 
 
 class TestInterDistanceWithPBC(object):
+    precs = [np.float32, np.float64]
     def test_1(self):
-        a = np.arange(30).reshape(10, 3).astype(np.float32)
-        b = np.arange(30).reshape(10, 3).astype(np.float32)
-        res = np.zeros(100).astype(np.float32)
-        box = np.ones(3).astype(np.float32) * 30
+        for prec in self.precs:
+            a = np.arange(30).reshape(10, 3).astype(prec)
+            b = np.arange(30).reshape(10, 3).astype(prec)
+            res = np.zeros(100).astype(prec)
+            box = np.ones(3).astype(prec) * 30
 
-        cgmath.inter_distance_array_withpbc(a, b, box, res)
-        ref = np.ravel(util.slow_inter_distance_withpbc(a, b, box))
+            cgmath.inter_distance_array_withpbc(a, b, box, res)
+            ref = np.ravel(util.slow_inter_distance_withpbc(a, b, box))
 
-        assert_array_almost_equal(ref, res)
+            assert_array_almost_equal(ref, res)
 
 
 class TestIntraDistanceNoPBC(object):
+    precs = [np.float32, np.float64]
     def test_1(self):
-        a = np.arange(30).reshape(10, 3).astype(np.float32)
-        n = 10
-        res = np.zeros(n * (n-1) // 2, dtype=np.float32)
+        for prec in self.precs:
+            a = np.arange(30).reshape(10, 3).astype(prec)
+            n = 10
+            res = np.zeros(n * (n-1) // 2, dtype=prec)
 
-        cgmath.intra_distance_array_nopbc(a, res)
-        ref = util.slow_intra_distance_nopbc(a)
+            cgmath.intra_distance_array_nopbc(a, res)
+            ref = util.slow_intra_distance_nopbc(a)
 
-        assert_array_almost_equal(ref, res)
+            assert_array_almost_equal(ref, res)
 
 class TestIntraDistanceWithPBC(object):
+    precs = [np.float32, np.float64]
     def test_1(self):
-        a = np.arange(30).reshape(10, 3).astype(np.float32)
-        n = 10
-        res = np.zeros(n * (n-1) // 2, dtype=np.float32)
-        box = np.ones(3).astype(np.float32) * 30
+        for prec in self.precs:
+            a = np.arange(30).reshape(10, 3).astype(prec)
+            n = 10
+            res = np.zeros(n * (n-1) // 2, dtype=prec)
+            box = np.ones(3).astype(prec) * 30
 
-        cgmath.intra_distance_array_withpbc(a, box, res)
-        ref = util.slow_intra_distance_withpbc(a, box)
+            cgmath.intra_distance_array_withpbc(a, box, res)
+            ref = util.slow_intra_distance_withpbc(a, box)
 
-        assert_array_almost_equal(ref, res)
+            assert_array_almost_equal(ref, res)
 
 
 class TestInterIndex(object):
