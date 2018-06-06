@@ -94,16 +94,15 @@ class CellGrid(object):
 
     Iterating over the CellGrid will cycle through all the Cells
     """
-    def __init__(self, box, max_dist, cell_str = None, coordinates=None):
+    def __init__(self, box, cellsize, coordinates=None):
         """Create a grid of cells
 
         :Arguments:
           box (3) - size of box in each direction
           max_dist - the maximum distance to be found
-          cell_str - None / 'opt'
           coordinates (n,3) - array of positions [optional]
         """
-        self.update(box=box, max_dist=max_dist, coordinates=coordinates, cell_str=cell_str)
+        self.update(box=box, cellsize=cellsize, coordinates=coordinates)
         self.periodic = True
 
     def update(self, **kwargs):
@@ -123,33 +122,21 @@ class CellGrid(object):
         box = kwargs.pop('box', False)
         if box is not False:
             self._box = box
-        max_dist = kwargs.pop('max_dist', False)
-        if max_dist is not False:
-            self._max_dist = max_dist
-        cell_str = kwargs.pop('cell_str', False)    
-         if cell_str is not False:
-            self._cell_str = cell_str
+        cellsize = kwargs.pop('cellsize', False)
+        if cellsize is not False:
+            self._cell_size = cellsize
 
         # Weird logic, but arrays don't evaluate to there
-        if (box is not False) or (max_dist is not False):
+        if (box is not False) or (cellsize is not False):
             self._determine_cell_dimensions()
         self._put_into_cells()
 
     def _determine_cell_dimensions(self):
         # number of cells in each direction
-        if (self._cell_str == 'opt') and (self._coordinates is not False):
-            self._max_dist = max(self._max_dist, self._per_cell(num = 30))
-        self._ncells = (self._box // self._max_dist).astype(np.int)
+        self._ncells = (self._box // self._cell_size).astype(np.int)
         self._total_cells = np.product(self._ncells)
         # size of cell in each direction
-        self._cell_size = self._box / self._ncells
-
-    def _per_cell(self, num):
-        # Cellsize based on the number of particles /cell
-        # Only for square grids, Can be modified for 
-        # rectangular grids as well 
-        return np.cbrt(self._coordinates.shape[0] / (np.product(box) * num)) 
-        
+        #self._cell_size = self._box / self._ncells
 
     def _put_into_cells(self):
         """Process the coordinates into cells"""
@@ -206,12 +193,12 @@ class CellGrid(object):
         self._determine_cell_dimensions()
 
     @property
-    def max_dist(self):
-        return self._max_dist
+    def cellsize(self):
+        return self._cell_size
 
-    @max_dist.setter
-    def max_dist(self, new):
-        self._max_dist = new
+    @cellsize.setter
+    def cellsize(self, new):
+        self._cell_size = new
         self._determine_cell_dimensions()
 
     def __len__(self):
