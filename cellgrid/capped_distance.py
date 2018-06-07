@@ -109,7 +109,7 @@ def _per_cell( N, box, particles_per_cell):
     """
     Returns the cell size based on the optimum particles per cell
     """
-    return np.cbrt((np.product(box) * particles_per_cell) / N)
+    return ((np.product(box) * particles_per_cell) / N)**(1/3.)
 
 def cellgrid_self_distance_array(cg1):
     """Calculate all pairwise distances within a certain CellGrid
