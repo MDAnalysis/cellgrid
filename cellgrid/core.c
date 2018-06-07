@@ -3929,7 +3929,7 @@ static PyObject *__pyx_pf_4core_8CellGrid_4_determine_cell_dimensions(CYTHON_UNU
  *         self._ncells = (self._box // self._cell_size).astype(np.int)
  *         self._total_cells = np.product(self._ncells)             # <<<<<<<<<<<<<<
  *         # size of cell in each direction
- *         #self._cell_size = self._box / self._ncells
+ *         self._cell_size = self._box / self._ncells
  */
   __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3987,6 +3987,24 @@ static PyObject *__pyx_pf_4core_8CellGrid_4_determine_cell_dimensions(CYTHON_UNU
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_total_cells, __pyx_t_1) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
+  /* "core.pyx":139
+ *         self._total_cells = np.product(self._ncells)
+ *         # size of cell in each direction
+ *         self._cell_size = self._box / self._ncells             # <<<<<<<<<<<<<<
+ * 
+ *     def _put_into_cells(self):
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_box_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ncells_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_cell_size, __pyx_t_4) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
   /* "core.pyx":134
  *         self._put_into_cells()
  * 
@@ -4013,7 +4031,7 @@ static PyObject *__pyx_pf_4core_8CellGrid_4_determine_cell_dimensions(CYTHON_UNU
 }
 
 /* "core.pyx":141
- *         #self._cell_size = self._box / self._ncells
+ *         self._cell_size = self._box / self._ncells
  * 
  *     def _put_into_cells(self):             # <<<<<<<<<<<<<<
  *         """Process the coordinates into cells"""
@@ -4555,7 +4573,7 @@ static PyObject *__pyx_pf_4core_8CellGrid_6_put_into_cells(CYTHON_UNUSED PyObjec
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "core.pyx":141
- *         #self._cell_size = self._box / self._ncells
+ *         self._cell_size = self._box / self._ncells
  * 
  *     def _put_into_cells(self):             # <<<<<<<<<<<<<<
  *         """Process the coordinates into cells"""
@@ -21406,7 +21424,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cellgrid_core_pyx, __pyx_n_s_determine_cell_dimensions, 134, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 134, __pyx_L1_error)
 
   /* "core.pyx":141
- *         #self._cell_size = self._box / self._ncells
+ *         self._cell_size = self._box / self._ncells
  * 
  *     def _put_into_cells(self):             # <<<<<<<<<<<<<<
  *         """Process the coordinates into cells"""
@@ -22168,7 +22186,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "core.pyx":141
- *         #self._cell_size = self._box / self._ncells
+ *         self._cell_size = self._box / self._ncells
  * 
  *     def _put_into_cells(self):             # <<<<<<<<<<<<<<
  *         """Process the coordinates into cells"""

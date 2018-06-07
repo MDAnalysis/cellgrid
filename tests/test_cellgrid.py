@@ -7,7 +7,7 @@ from cellgrid.core import (CellGrid, _address_to_index, _index_to_address,
 class TestCellDetermining(object):
     def test_creation(self):
         """Box split directly into 4 cells"""
-        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+        cg = CellGrid(box=np.ones(3), cellsize=0.25)
 
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 4]))
@@ -16,14 +16,14 @@ class TestCellDetermining(object):
 
     def test_creation_2(self):
         """Box split into 4, 0.22 needs to round up to 0.25"""
-        cg = CellGrid(box=np.ones(3), max_dist=0.22)
+        cg = CellGrid(box=np.ones(3), cellsize=0.22)
 
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 4]))
         assert cg._total_cells == 64
 
     def test_creation_3(self):
-        cg = CellGrid(box=np.array([1.0, 1.0, 2.0]), max_dist=0.25)
+        cg = CellGrid(box=np.array([1.0, 1.0, 2.0]), cellsize=0.25)
 
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 8]))
@@ -31,7 +31,7 @@ class TestCellDetermining(object):
 
     def test_change_box(self):
         """Redefine box"""
-        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+        cg = CellGrid(box=np.ones(3), cellsize=0.25)
 
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 4]))
@@ -47,14 +47,14 @@ class TestCellDetermining(object):
 
     def test_change_max_dist(self):
         """Redefine max dist"""
-        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+        cg = CellGrid(box=np.ones(3), cellsize=0.25)
 
         assert all(cg._cell_size == np.array([0.25, 0.25, 0.25]))
         assert all(cg._ncells == np.array([4, 4, 4]))
         assert cg._total_cells == 64
         assert len(cg) == 64
 
-        cg.max_dist = 0.50
+        cg.cellsize = 0.50
 
         assert all(cg._cell_size == np.array([0.50, 0.50, 0.50]))
         assert all(cg._ncells == np.array([2, 2, 2]))
@@ -110,7 +110,7 @@ class TestCellDefinition(object):
         points = np.array([[0.1, 0.1, 0.1],
                            [0.9, 0.9, 0.9]])
 
-        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+        cg = CellGrid(box=np.ones(3), cellsize=0.25)
         cg.coordinates = points
 
         assert all(cg._cell_addresses[0] == np.array([0, 0, 0]))
@@ -123,7 +123,7 @@ class TestCellDefinition(object):
                            [0.1, 0.1, 0.1],
                            [0.9, 0.9, 0.9]])
 
-        cg = CellGrid(box=np.ones(3), max_dist=0.25, coordinates=points)
+        cg = CellGrid(box=np.ones(3), cellsize=0.25, coordinates=points)
 
         assert all(cg._original_indices == np.array([1, 0, 2]))
         assert all(cg._order == np.array([1, 0, 2]))
@@ -137,7 +137,7 @@ class TestCellDefinition(object):
         assert cg._sorted_coords.flags['C'] == True
 
     def test_nocoords(self):
-        cg = CellGrid(box=np.ones(3), max_dist=0.25)
+        cg = CellGrid(box=np.ones(3), cellsize=0.25)
         cg.coordinates = None
 
         assert cg.coordinates is None
@@ -168,7 +168,7 @@ class TestViewCreator(object):
                                [0.1, 0.1, 0.1],
                                [0.9, 0.9, 0.9]], dtype=prec)
 
-            cg = CellGrid(box=np.ones(3), max_dist=0.25, coordinates=points)
+            cg = CellGrid(box=np.ones(3), cellsize=0.25, coordinates=points)
 
             views = cg._views
             assert len(views) == cg._total_cells
@@ -184,7 +184,7 @@ class TestViewCreator(object):
                                [0.1, 0.1, 0.1],
                                [0.9, 0.9, 0.9]], dtype=prec)
 
-            cg = CellGrid(box=np.ones(3), max_dist=0.50,
+            cg = CellGrid(box=np.ones(3), cellsize=0.50,
                           coordinates=points)
 
             for cell, exp in zip(cg, [1, 0, 0, 0,

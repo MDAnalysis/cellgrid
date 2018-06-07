@@ -100,8 +100,8 @@ def capped_self_distance_array(a, cellsize, box, particles_per_cell = 30):
     particles per cell and provided cellsize
     """
     if particles_per_cell is not None:
-        cellsize = max(cellsize, _per_cell(a.shape[0], box, particles_per_cell))
-    cga = CellGrid(box, cellsize, a)
+        cellsize = min(max(cellsize, _per_cell(a.shape[0], box, particles_per_cell)), 0.33*min(box))
+        cga = CellGrid(box, cellsize, a)
 
     return cellgrid_self_distance_array(cga)
 

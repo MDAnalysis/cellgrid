@@ -136,7 +136,7 @@ class CellGrid(object):
         self._ncells = (self._box // self._cell_size).astype(np.int)
         self._total_cells = np.product(self._ncells)
         # size of cell in each direction
-        #self._cell_size = self._box / self._ncells
+        self._cell_size = self._box / self._ncells
 
     def _put_into_cells(self):
         """Process the coordinates into cells"""
