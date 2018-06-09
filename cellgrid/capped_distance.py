@@ -24,15 +24,17 @@ from cellgrid import cgmath
 from cellgrid.core import CellGrid
 
 
-def capped_distance_array(a, b, max_dist, box=None):
+def capped_distance_array(a, b, cellsize, box=None):
     """Calculate all pairwise distances between *a* and *b* up to *max_dist*
 
     If given, *box* defines the unit cell size for periodic boundaries
     """
-    cga = CellGrid(box, max_dist, a)
-    cgb = CellGrid(box, max_dist, b)
+    cga = CellGrid(box, cellsize, a)
+    cgb = CellGrid(box, cellsize, b)
 
     return cellgrid_distance_array(cga, cgb)
+
+
 
 
 def cellgrid_distance_array(cg1, cg2):
@@ -91,10 +93,23 @@ def _calculate_distance_array_size(cg1, cg2):
     return N
 
 
-def capped_self_distance_array(a, max_dist, box):
-    cga = CellGrid(box, max_dist, a)
+def capped_self_distance_array(a, cellsize, box, particles_per_cell = 30):
+    """
+    Optimized to identify pair contacts within a distance
+    Cellsize is changed based on the maximum of number of 
+    particles per cell and provided cellsize
+    """
+    if particles_per_cell is not None:
+        cellsize = min(max(cellsize, _per_cell(a.shape[0], box, particles_per_cell)), 0.33*min(box))
+    cga = CellGrid(box, cellsize, a)
 
     return cellgrid_self_distance_array(cga)
+
+def _per_cell( N, box, particles_per_cell):
+    """
+    Returns the cell size based on the optimum particles per cell
+    """
+    return ((np.product(box) * particles_per_cell) / N)**(1/3.)
 
 def cellgrid_self_distance_array(cg1):
     """Calculate all pairwise distances within a certain CellGrid
